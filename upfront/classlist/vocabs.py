@@ -1,11 +1,10 @@
 from five import grok
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
+from zope.component.hooks import getSite
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
-
-from Products.CMFCore.utils import getToolByName
 
 from upfront.classlist import MessageFactory as _
 
@@ -14,4 +13,22 @@ GENDER = SimpleVocabulary(
      SimpleTerm(value=u'Female', title=_(u'Female'))]
     )
 
+@grok.provider(IContextSourceBinder)
+def availableLanguages(context):
+    terms = []
 
+    # This method can assume that the language topic tree is in a fixed location 
+    # in the site eg /topictrees/language for now.
+
+    language_folder = getSite().restrictedTraverse("topictrees/language")
+
+    topics = language_folder.getFolderContents()
+    for brain in topics:
+
+        topic = brain.getObject()
+        intids = getUtility(IIntIds)
+        topic_intid = intids.getId(topic)
+        terms.append(SimpleVocabulary.createTerm(topic_intid, topic_intid,
+                                                 topic.Title()))
+
+    return SimpleVocabulary(terms)

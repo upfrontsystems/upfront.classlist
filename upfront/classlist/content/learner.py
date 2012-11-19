@@ -7,6 +7,7 @@ from plone.directives import dexterity, form
 
 from upfront.classlist import MessageFactory as _
 from upfront.classlist.vocabs import GENDER
+from upfront.classlist.vocabs import availableLanguages
 
 class ILearner(form.Schema):
     """ Description of Learner content type
@@ -20,6 +21,12 @@ class ILearner(form.Schema):
     name = schema.TextLine(
             title=_(u"Name"),
             required=True,
+        )
+
+    form.widget(home_language=SelectFieldWidget)
+    home_language = RelationChoice(
+            title=_(u"Home Language"),
+            source=availableLanguages,
         )
 
     gender = schema.Choice(
