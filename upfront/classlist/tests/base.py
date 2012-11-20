@@ -16,7 +16,9 @@ class TestCase(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
+        import collective.topictree
         import upfront.classlist
+        self.loadZCML(package=collective.topictree)
         self.loadZCML(package=upfront.classlist)
         z2.installProduct(app, PROJECTNAME)
 
@@ -38,4 +40,27 @@ class UpfrontClassListTestBase(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.intids = getUtility(IIntIds)
+        self.portal = self.layer['portal']
+        self.request = self.layer['request']
+
+        self.portal.invokeFactory(type_name='Folder', id='topictrees',
+                                  title='Topic Trees')
+        folder = self.portal._getOb('topictrees')
+
+        self.topictrees = self.portal.topictrees
+        self.topictrees.invokeFactory('collective.topictree.topictree',
+                                      'language', title='Language')
+        topictree = self.topictrees._getOb('language')
+
+        topictree.invokeFactory('collective.topictree.topic',
+                                'afrikaans', title='Afrikaans')
+        self.topic1 = topictree._getOb('afrikaans')
+        topictree.invokeFactory('collective.topictree.topic',
+                                'english', title='English')
+        self.topic2 = topictree._getOb('english')
+        topictree.invokeFactory('collective.topictree.topic',
+                                'xhosa', title='Xhosa')
+        self.topic3 = topictree._getOb('xhosa')
+
+        self.topictree = topictree
 
