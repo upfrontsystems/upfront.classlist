@@ -1,6 +1,10 @@
 from five import grok
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
+
+from zope.app.intid.interfaces import IIntIds
+from zope.component import getUtility
+
 from zope.component.hooks import getSite
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
@@ -20,11 +24,13 @@ def availableLanguages(context):
     # This method can assume that the language topic tree is in a fixed location 
     # in the site eg /topictrees/language for now.
 
-    language_folder = getSite().restrictedTraverse("topictrees/language")
+    portal_state = context.restrictedTraverse('@@plone_portal_state')
+    portal = portal_state.portal()
+
+    language_folder = portal.topictrees.language
 
     topics = language_folder.getFolderContents()
     for brain in topics:
-
         topic = brain.getObject()
         intids = getUtility(IIntIds)
         topic_intid = intids.getId(topic)
