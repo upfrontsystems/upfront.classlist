@@ -31,4 +31,6 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <adapter factory=".relationdatamanager.RelationDataManager" />
+
 </configure>
