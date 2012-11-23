@@ -63,4 +63,3 @@ class UpfrontClassListTestBase(unittest.TestCase):
         self.topic3 = topictree._getOb('xhosa')
 
         self.topictree = topictree
-
