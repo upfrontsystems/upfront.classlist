@@ -22,7 +22,6 @@ class View(dexterity.DisplayForm):
         """
         contentFilter = {
             'portal_type': 'upfront.classlist.content.learner'}
-        import pdb; pdb.set_trace()
         return self.context.getFolderContents(contentFilter,full_objects=True)
 
 
