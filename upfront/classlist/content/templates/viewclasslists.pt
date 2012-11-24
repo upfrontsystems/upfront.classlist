@@ -1,0 +1,108 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="tarmii.theme"
+      lang="en">
+
+<body>
+    <metal:main fill-slot="main">
+
+    <div id="content-core">
+
+        <h1>Edit Class List</h1> 
+
+        <form action="http://www.tarmii.co.za/Members/roche/classlists/4f/@@manageClassList" id="classlist-edit-form" method="POST">
+            <table>
+                <tbody>
+                <tr>
+                    <th>CLASS NAME</th>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="text" value="4F" id="classlist-title" name="title">
+                    </td>
+                    <td>
+                        <input type="submit" value="Save" id="classlist-save" name="form.button.save">
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </form>
+
+        <div>
+            <form action="http://www.tarmii.co.za/Members/roche/classlists/4f/@@addLearnerToClassList" id="classlist-add-learner-form" method="POST">
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>CODE</th>
+                        <th>LEARNER NAME</th>
+                        <th>GENDER</th>
+                        <th>HOME LANGUAGE</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="text" class="classlist-code" name="code" id="classlist-code">
+                        </td>
+                        <td>
+                            <input type="text" class="classlist-name" name="name" id="classlist-name">
+                        </td>
+                        <td class="classlist-gender">
+                            <select name="gender" id="classlist-gender">
+                                <option value="unknown">Unknown</option>
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </td>
+                        <td class="classlist-language">
+                            <select name="homeLanguage" id="classlist-homeLanguage">
+                                <option value="unknown">Unknown</option>
+                                <option value="af">Afrikaans</option>
+                                <option value="en">English</option>
+                                <option value="nd">isiNdebele</option>
+                                <option value="xh">isiXhosa</option>
+                                <option value="zu">isiZulu</option>
+                                <option value="sl">seSotho sa Lebowa</option>
+                                <option value="se">Sesotho</option>
+                                <option value="st">Setswana</option>
+                                <option value="sw">siSwati</option>
+                                <option value="ts">Tshivenda</option>
+                                <option value="xi">Xitsonga</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </td>              
+                        <td>
+                            <input type="submit" value="Add" name="form.button.add">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div>
+            <tal:listing tal:condition="not:view/learners">
+                <h3>No learners added to this classlist.</h3>
+            </tal:listing>
+
+            <tal:learners condition="view/learners">
+                <table class="listing">
+                    <tr tal:repeat="learner view/learners">
+                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" value="learner">
+                        <td tal:content="learner/code"></td>
+                        <td>
+                            <a tal:attributes="href string:${learner/absolute_url}/edit" 
+                               tal:content="string:${learner/name}"></a>
+                        </td>                        
+                        <td tal:content="learner/home_language/to_object/title"></td>                        
+                        <td tal:content="learner/gender"></td>
+                    </tr>
+                </table>
+            </tal:learners>
+        </div>
+
+    </div>
+
+    </metal:main>
+</body>
+</html>

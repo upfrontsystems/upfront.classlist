@@ -10,3 +10,21 @@ class IClassList(form.Schema):
 class ClassList(dexterity.Container):
     grok.implements(IClassList)
 
+
+grok.templatedir('templates')
+class View(dexterity.DisplayForm):
+    grok.context(IClassList)
+    grok.template('viewclasslists')
+    grok.require('zope2.View')
+
+    def learners(self):
+        """ Return all the learners in the current classlist folder
+        """
+        contentFilter = {
+            'portal_type': 'upfront.classlist.content.learner'}
+        import pdb; pdb.set_trace()
+        return self.context.getFolderContents(contentFilter,full_objects=True)
+
+
+
+
