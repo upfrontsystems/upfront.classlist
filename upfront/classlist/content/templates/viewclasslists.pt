@@ -57,21 +57,12 @@
                         </td>
                         <td class="classlist-language">
                             <select name="homeLanguage" id="classlist-homeLanguage">
-                                <option value="unknown">Unknown</option>
-                                <option value="af">Afrikaans</option>
-                                <option value="en">English</option>
-                                <option value="nd">isiNdebele</option>
-                                <option value="xh">isiXhosa</option>
-                                <option value="zu">isiZulu</option>
-                                <option value="sl">seSotho sa Lebowa</option>
-                                <option value="se">Sesotho</option>
-                                <option value="st">Setswana</option>
-                                <option value="sw">siSwati</option>
-                                <option value="ts">Tshivenda</option>
-                                <option value="xi">Xitsonga</option>
-                                <option value="other">Other</option>
+                                <tal:fill tal:repeat="language view/languages">
+                                    <option tal:attributes="value language"
+                                            tal:content="language" ></option>
+                                </tal:fill>
                             </select>
-                        </td>              
+                        </td>
                         <td>
                             <input type="submit" value="Add" name="form.button.add">
                         </td>
