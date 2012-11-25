@@ -1,7 +1,6 @@
 $(function() {
 
     $("#classlist-save").bind('click', function() {
-        console.log("SAVE")
         var title = $('#classlist-title').val()
         $.ajax({
             url: '@@renameclasslist',
@@ -19,7 +18,22 @@ $(function() {
     });
 
     $("#learner-remove").bind('click', function() {
-        console.log("REMOVE")
+        var remove_list = [];
+        $('#learner-listing input:checked:enabled').each(function(index, para) { 
+            remove_list[index] = $(para).attr('value');
+        });
+        var title = $('#classlist-title').val()
+        $.ajax({
+            url: '@@removelearners',
+            data: {
+                'remove_uids': remove_list,
+            },
+            traditional: true, // needed to send js array via ajax
+            dataType: "json",
+            success: updateLearnerListing,
+            error: displayError,
+        });
+
     });
 
 });
@@ -37,6 +51,10 @@ function updateView(data) {
     else if (result == 'error') {
         console.log('ERROR')
     }
+}
+
+function updateLearnerListing(data) {
+    // XXX create this function
 }
 
 function displayError(data) {

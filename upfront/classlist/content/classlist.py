@@ -74,7 +74,6 @@ class RenameClassListView(grok.View):
         title = self.request.get('title', '')
         print title
 
-        import pdb; pdb.set_trace()
         # Validate
         # name/title must exist
         if self.request.get('title', '') == '':
@@ -115,21 +114,29 @@ class RenameClassListView(grok.View):
         return ''
 
 
+class RemoveLearnersView(grok.View):
+    """ Removes some learners from a classlist
+    """
+    grok.context(Interface)
+    grok.name('removelearners') 
+    grok.require('zope2.View')
 
+    def __call__(self):
+        """ Remove some learners from a classlist """
 
+        remove_uids = self.request.get('remove_uids', '')
+        print remove_uids
 
+        # XXX ADD DELETE CODE AND CHECKS
 
+        # success
+        msg = _("Learners removed from Classlist %s" % classlist.Title())
+        return json.dumps({'result'   : 'info',
+                           'contents' : msg,
+                           'url'      : '#' })
 
-
-
-
-
-
-
-
-
-
-
-
-
+    def render(self):
+        """ No-op to keep grok.View happy
+        """
+        return ''
 

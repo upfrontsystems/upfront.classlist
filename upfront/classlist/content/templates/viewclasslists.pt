@@ -30,7 +30,7 @@
             </table>
 
         <div>
-            <form action="http://www.tarmii.co.za/Members/roche/classlists/4f/@@addLearnerToClassList" id="classlist-add-learner-form" method="POST">
+
                 <table>
                     <tbody>
                     <tr>
@@ -67,17 +67,18 @@
                     </tr>
                     </tbody>
                 </table>
-            </form>
+
         </div>
+
         <div>
             <tal:listing tal:condition="not:view/learners">
                 <h3 i18n:translate="message_no_learners">No learners added to this classlist.</h3>
             </tal:listing>
 
             <tal:learners condition="view/learners">
-                <table class="listing">
+                <table id="learner-listing" class="listing">
                     <tr tal:repeat="learner view/learners">
-                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" value="learner">
+                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" tal:attributes="value learner/getIUUID">
                         <td tal:content="learner/code"></td>
                         <td>
                             <a tal:attributes="href string:${learner/absolute_url}/edit" 
