@@ -11,13 +11,12 @@
 
     <div id="content-core">
 
-        <h1>Edit Class List</h1> 
+        <h1 i18n:translate="heading_edit_classlist">Edit Class List: <span tal:content="view/classlist"> </span></h1>
         <div class="result"></div>
-
             <table>
                 <tbody>
                 <tr>
-                    <th>CLASS NAME</th>
+                    <th i18n:translate="heading_classname">CLASS NAME</th>
                 </tr>
                 <tr>
                     <td>
@@ -35,10 +34,10 @@
                 <table>
                     <tbody>
                     <tr>
-                        <th>CODE</th>
-                        <th>LEARNER NAME</th>
-                        <th>GENDER</th>
-                        <th>HOME LANGUAGE</th>
+                        <th i18n:translate="title_code">CODE</th>
+                        <th i18n:translate="title_learner_name">LEARNER NAME</th>
+                        <th i18n:translate="title_gender">GENDER</th>
+                        <th i18n:translate="title_home_language">HOME LANGUAGE</th>
                     </tr>
                     <tr>
                         <td>
@@ -72,7 +71,7 @@
         </div>
         <div>
             <tal:listing tal:condition="not:view/learners">
-                <h3>No learners added to this classlist.</h3>
+                <h3 i18n:translate="message_no_learners">No learners added to this classlist.</h3>
             </tal:listing>
 
             <tal:learners condition="view/learners">

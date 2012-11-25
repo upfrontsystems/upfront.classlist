@@ -36,6 +36,13 @@ class View(dexterity.DisplayForm):
 
         return lang_list
 
+    def classlist(self):
+        """ Return the currently selected classlist
+        """
+#        import pdb; pdb.set_trace()
+        return self.context.title
+
+
     def learners(self):
         """ Return all the learners in the current classlist folder
         """
@@ -52,7 +59,7 @@ class RenameClassListView(grok.View):
     grok.require('zope2.View')
 
     def __call__(self):
-        """ XXX """
+        """ Rename the current classlist """
 
         title = self.request.get('title', '')
         print title
@@ -82,6 +89,7 @@ class RenameClassListView(grok.View):
         """ No-op to keep grok.View happy
         """
         return ''
+
 
 
 
