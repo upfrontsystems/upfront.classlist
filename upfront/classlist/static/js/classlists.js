@@ -3,13 +3,14 @@ $(function() {
     $("#classlist-save").bind('click', function() {
         console.log("SAVE")
         var title = $('#classlist-title').val()
-        var ajax_url = '@@renameclasslist?title=' + title;
         $.ajax({
-            url: ajax_url,
-            success: function(data) {
-                $('.result').html(data);
-                console.log("SAVE was performed");
-            }
+            url: '@@renameclasslist',
+            data: {
+                'title': title
+            },
+            dataType: "json",
+            success: updateView,
+            error: displayError,
         });
     });
 
@@ -22,3 +23,23 @@ $(function() {
     });
 
 });
+
+function updateView(data) {
+    var result = data.result;
+    var contents = data.contents;
+    var url = data.url
+    console.log(result)
+    console.log(contents)
+    if (result == 'info') {
+//        window.location.href = url
+        console.log('INFO')
+    }
+    else if (result == 'error') {
+        console.log('ERROR')
+    }
+}
+
+function displayError(data) {
+    // XXX update with real error
+    console.log('AJAX ERROR')
+}

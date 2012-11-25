@@ -12,7 +12,7 @@
     <div id="content-core">
 
         <h1 i18n:translate="heading_edit_classlist">Edit Class List: <span tal:content="view/classlist"> </span></h1>
-        <div class="result"></div>
+
             <table>
                 <tbody>
                 <tr>
@@ -20,7 +20,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" value="4F" id="classlist-title" name="title">
+                        <input type="text" value="" id="classlist-title" name="title">
                     </td>
                     <td>
                         <input type="submit" value="Save" id="classlist-save" name="form.button.save">

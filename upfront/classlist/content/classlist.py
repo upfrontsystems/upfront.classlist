@@ -1,14 +1,26 @@
+import json
 from five import grok
 from zope import schema
 from zope.interface import Interface
+from zope.component import queryUtility
 from z3c.form.i18n import MessageFactory as _
 from plone.directives import dexterity, form
 
 from upfront.classlist.vocabs import availableLanguages
 
+# Import conditionally, so we don't introduce a hard depdendency
+try:
+    from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
+    from plone.i18n.normalizer.interfaces import IURLNormalizer
+    URL_NORMALIZER = True
+except ImportError:
+    URL_NORMALIZER = False
+
+
 class IClassList(form.Schema):
     """ Description of ClassList content type
     """
+
 
 class ClassList(dexterity.Container):
     grok.implements(IClassList)
@@ -39,9 +51,7 @@ class View(dexterity.DisplayForm):
     def classlist(self):
         """ Return the currently selected classlist
         """
-#        import pdb; pdb.set_trace()
         return self.context.title
-
 
     def learners(self):
         """ Return all the learners in the current classlist folder
@@ -64,14 +74,16 @@ class RenameClassListView(grok.View):
         title = self.request.get('title', '')
         print title
 
+        import pdb; pdb.set_trace()
         # Validate
         # name/title must exist
         if self.request.get('title', '') == '':
             msg = _("Name is required")
-            return [msg,'error']
+            return json.dumps({'result'   : 'error',
+                               'contents' : msg,
+                                'url'     : '#'})
 
         classlist = self.context
-
         # name/title must be unique
         old_title = classlist.Title()
         new_title = self.request.get('title')
@@ -79,11 +91,23 @@ class RenameClassListView(grok.View):
             parent = classlist.aq_inner.aq_parent
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
-                    msg = _("Name is not unique")
-                    return [msg,'error']
+                    msg = _("Name is not unique")                    
+                    return json.dumps({'result'   : 'error',
+                                       'contents' : msg,
+                                       'url'      : '#'})
+
+        # Create/Modify
+        classlist.edit(title=title)
+        if old_title != new_title:
+            # sanitise id for URL
+            #if URL_NORMALIZER:
+            #    classlist.id = queryUtility(IURLNormalizer).normalize(title)
+            msg = _("Classlist %s was modified" % classlist.Title())
 
         url = "%s" % self.context.absolute_url()
-        return [url,'redirect']
+        return json.dumps({'result'   : 'info',
+                           'contents' : msg,
+                           'url'      : url })
 
     def render(self):
         """ No-op to keep grok.View happy
