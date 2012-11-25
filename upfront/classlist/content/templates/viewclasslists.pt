@@ -12,8 +12,8 @@
     <div id="content-core">
 
         <h1>Edit Class List</h1> 
+        <div class="result"></div>
 
-        <form action="http://www.tarmii.co.za/Members/roche/classlists/4f/@@manageClassList" id="classlist-edit-form" method="POST">
             <table>
                 <tbody>
                 <tr>
@@ -29,7 +29,6 @@
                 </tr>
                 </tbody>
             </table>
-        </form>
 
         <div>
             <form action="http://www.tarmii.co.za/Members/roche/classlists/4f/@@addLearnerToClassList" id="classlist-add-learner-form" method="POST">
@@ -64,7 +63,7 @@
                             </select>
                         </td>
                         <td>
-                            <input type="submit" value="Add" name="form.button.add">
+                            <input id="learner-add" type="submit" value="Add" name="form.button.add">
                         </td>
                     </tr>
                     </tbody>
@@ -90,6 +89,7 @@
                     </tr>
                 </table>
             </tal:learners>
+            <input id="learner-remove" type="submit" value="Remove" name="form.button.remove">
         </div>
 
     </div>

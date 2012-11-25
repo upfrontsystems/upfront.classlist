@@ -1,6 +1,7 @@
 from five import grok
 from zope import schema
 from zope.interface import Interface
+from z3c.form.i18n import MessageFactory as _
 from plone.directives import dexterity, form
 
 from upfront.classlist.vocabs import availableLanguages
@@ -41,6 +42,60 @@ class View(dexterity.DisplayForm):
         contentFilter = {
             'portal_type': 'upfront.classlist.content.learner'}
         return self.context.getFolderContents(contentFilter,full_objects=True)
+
+
+class RenameClassListView(grok.View):
+    """ Rename the current classlist
+    """
+    grok.context(Interface)
+    grok.name('renameclasslist') 
+    grok.require('zope2.View')
+
+    def __call__(self):
+        """ XXX """
+
+        title = self.request.get('title', '')
+        print title
+
+        # Validate
+        # name/title must exist
+        if self.request.get('title', '') == '':
+            msg = _("Name is required")
+            return [msg,'error']
+
+        classlist = self.context
+
+        # name/title must be unique
+        old_title = classlist.Title()
+        new_title = self.request.get('title')
+        if old_title != new_title:
+            parent = classlist.aq_inner.aq_parent
+            for alist in parent.objectValues():
+                if alist != self and alist.Title() == new_title:
+                    msg = _("Name is not unique")
+                    return [msg,'error']
+
+        url = "%s" % self.context.absolute_url()
+        return [url,'redirect']
+
+    def render(self):
+        """ No-op to keep grok.View happy
+        """
+        return ''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

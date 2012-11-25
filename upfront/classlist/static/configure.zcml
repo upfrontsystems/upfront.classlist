@@ -1,0 +1,7 @@
+<configure
+    ...
+    xmlns:grok="http://namespaces.zope.org/grok">
+
+  <grok:grok package="." />
+
+</configure>
