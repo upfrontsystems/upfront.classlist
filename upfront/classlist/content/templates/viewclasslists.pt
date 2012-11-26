@@ -13,6 +13,7 @@
 
         <h1 i18n:translate="heading_edit_classlist">Edit Class List: <span tal:content="view/classlist"> </span></h1>
 
+        <form tal:attributes="action view/getSaveUrl" id="classlist-edit-form" method="POST"> 
             <table>
                 <tbody>
                 <tr>
@@ -20,17 +21,17 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" value="" id="classlist-title" name="title">
+                        <input type="text" value="" id="classlist-title" name="rename.form.newtitle">
                     </td>
                     <td>
-                        <input type="submit" value="Save" id="classlist-save" name="form.button.save">
+                        <input type="submit" value="Save" id="classlist-save" name="form.button.save" >
                     </td>
                 </tr>
                 </tbody>
             </table>
+          </form>
 
         <div>
-
                 <table>
                     <tbody>
                     <tr>

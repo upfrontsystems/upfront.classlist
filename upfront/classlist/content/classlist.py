@@ -24,6 +24,9 @@ class View(dexterity.DisplayForm):
     grok.template('viewclasslists')
     grok.require('zope2.View')
 
+    def getSaveUrl(self):
+        return '%s/@@renameclasslist' % self.context.absolute_url()
+
     def languages(self):
         """ Return the contents languages dictionary as a list of strings
         """
@@ -63,28 +66,23 @@ class RenameClassListView(grok.View):
     def __call__(self):
         """ Rename the current classlist """
 
-        new_title = self.request.get('title', '')
+        new_title = self.request.form['rename.form.newtitle']
 
-        # Validate
         # name/title must exist
-        if self.request.get('title', '') == '':
+        if new_title == '':
             msg = _("Name is required")
-            return json.dumps({'result'   : 'error',
-                               'contents' : msg,
-                                'url'     : '#'})
+            return
 
         classlist = self.context
-        # name/title must be unique
         old_title = classlist.Title()
-        new_title = self.request.get('title')
+
+        # name/title must be unique
         if old_title != new_title:
             parent = classlist.aq_inner.aq_parent
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
                     msg = _("Name is not unique")                    
-                    return json.dumps({'result'   : 'error',
-                                       'contents' : msg,
-                                       'url'      : '#'})
+                    return
 
         # Create/Modify
         if old_title != new_title:
@@ -93,15 +91,11 @@ class RenameClassListView(grok.View):
             name = INameChooser(classlists).chooseName(None, classlist)
             classlists.manage_renameObject(classlist.id, name)
             msg = _("Classlist %s was modified" % classlist.Title())
-            url = "%s" % self.context.absolute_url()
-            return json.dumps({'result'   : 'info',
-                               'contents' : msg,
-                               'url'      : url })
+            return self.request.RESPONSE.redirect( \
+                   "%s" % self.context.absolute_url())
 
-        msg = _("New name identical to old name")        
-        return json.dumps({'result'   : 'info',
-                           'contents' : msg,
-                           'url'      : '#' })
+        msg = _("New name identical to old name")
+        return
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -124,8 +118,7 @@ class RemoveLearnersView(grok.View):
         if remove_uids == '':
             msg = _("No Learners selected")
             return json.dumps({'result'   : 'error',
-                               'contents' : msg,
-                               'url'      : '#' })
+                               'contents' : msg})
 
         if isinstance(remove_uids, basestring):
             # wrap string in a list for deleting mechanism to work
@@ -140,8 +133,7 @@ class RemoveLearnersView(grok.View):
         # success
         msg = _("Learner(s) removed from Classlist %s" % classlist.Title())
         return json.dumps({'result'   : 'info',
-                           'contents' : msg,
-                           'url'      : '#' })
+                           'contents' : msg})
 
     def render(self):
         """ No-op to keep grok.View happy
