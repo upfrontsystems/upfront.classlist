@@ -4,7 +4,6 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from z3c.relationfield.schema import RelationChoice
 from z3c.form.browser.select import SelectFieldWidget
 from plone.directives import dexterity, form
-from plone.uuid.interfaces import IUUID
 
 from upfront.classlist import MessageFactory as _
 from upfront.classlist.vocabs import GENDER
@@ -40,5 +39,3 @@ class ILearner(form.Schema):
 class Learner(dexterity.Item):
     grok.implements(ILearner)
 
-    def getIUUID(self):
-        return IUUID(self)

@@ -1,8 +1,12 @@
 import json
 from five import grok
+
 from zope.app.container.interfaces import INameChooser
 from zope.interface import Interface
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 from z3c.form.i18n import MessageFactory as _
+
 from plone.directives import dexterity, form
 
 from Products.CMFCore.utils import getToolByName
@@ -113,27 +117,68 @@ class RemoveLearnersView(grok.View):
     def __call__(self):
         """ Remove a selected number of learners from a classlist """
 
-        remove_uids = self.request.get('remove_uids', '')
+        remove_ids = self.request.get('remove_ids', '')
 
-        if remove_uids == '':
+        if remove_ids == '':
             msg = _("No Learners selected")
             return json.dumps({'result'   : 'error',
                                'contents' : msg})
 
-        if isinstance(remove_uids, basestring):
+        if isinstance(remove_ids, basestring):
             # wrap string in a list for deleting mechanism to work
-            remove_uids = [remove_uids]
+            remove_ids = [remove_ids]
 
         classlist = self.context
-        catalog = getToolByName(self.context, 'portal_catalog')
-        for remove_uid in remove_uids:
-            brains = catalog(UID=remove_uid)
-            del classlist[brains[0].id]
+        for remove_id in remove_ids:
+            del classlist[remove_id]
 
         # success
         msg = _("Learner(s) removed from Classlist %s" % classlist.Title())
         return json.dumps({'result'   : 'info',
                            'contents' : msg})
+
+    def render(self):
+        """ No-op to keep grok.View happy
+        """
+        return ''
+
+
+class AddLearnerView(grok.View):
+    """ Add a learner to a classlist
+    """
+    grok.context(Interface)
+    grok.name('addlearner')
+    grok.require('zope2.View')
+
+    def __call__(self):
+        """ Add a learner to a classlist """
+
+        learner_code = self.request.get('learner_code', '')
+        learner_name = self.request.get('learner_name', '')
+        learner_gender = self.request.get('learner_gender', '')
+        learner_lang = self.request.get('learner_lang', '')
+
+        #XXX: At this moment we are assuming we got good input
+        # validation needs to be added either here or client side
+
+        #XXX: Add check that code is unique in the system, beyond this point
+        # it is assumed that is.
+
+        classlist = self.context
+
+
+        # temporary until actual objects are created correctly with invokefactory
+        learner_id = 'TEMP_ID'
+        learner_editurl = 'www.google.com'
+
+        # success
+        msg = _("New learner added")
+        return json.dumps({'id'              : learner_id,
+                           'learner_code'    : learner_code,
+                           'learner_name'    : learner_name,
+                           'learner_editurl' : learner_editurl,
+                           'learner_gender'  : learner_gender,
+                           'learner_lang'    : learner_lang})
 
     def render(self):
         """ No-op to keep grok.View happy

@@ -29,11 +29,11 @@
                 </tr>
                 </tbody>
             </table>
-          </form>
+        </form>
 
         <div>
-                <table>
-                    <tbody>
+             <table>
+                 <tbody>
                     <tr>
                         <th i18n:translate="title_code">CODE</th>
                         <th i18n:translate="title_learner_name">LEARNER NAME</th>
@@ -49,9 +49,9 @@
                         </td>
                         <td class="classlist-gender">
                             <select name="gender" id="classlist-gender">
-                                <option value="unknown" i18n:translate="gender_unknown">Unknown</option>
-                                <option value="male" i18n:translate="gender_male">Male</option>
-                                <option value="female" i18n:translate="gender_female">Female</option>
+                                <option value="Unknown" i18n:translate="gender_unknown">Unknown</option>
+                                <option value="Male" i18n:translate="gender_male">Male</option>
+                                <option value="Female" i18n:translate="gender_female">Female</option>
                             </select>
                         </td>
                         <td class="classlist-language">
@@ -66,9 +66,8 @@
                             <input id="learner-add" type="submit" value="Add" name="form.button.add">
                         </td>
                     </tr>
-                    </tbody>
-                </table>
-
+                 </tbody>
+             </table>
         </div>
 
         <div>
@@ -79,7 +78,7 @@
             <tal:learners condition="view/learners">
                 <table id="learner-listing" class="listing">
                     <tr tal:repeat="learner view/learners">
-                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" tal:attributes="value learner/getIUUID">
+                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" tal:attributes="value learner/id">
                         <td tal:content="learner/code"></td>
                         <td>
                             <a tal:attributes="href string:${learner/absolute_url}/edit" 
