@@ -1,23 +1,13 @@
 import json
 from five import grok
-from zope import schema
+from zope.app.container.interfaces import INameChooser
 from zope.interface import Interface
-from zope.component import queryUtility
 from z3c.form.i18n import MessageFactory as _
 from plone.directives import dexterity, form
 
 from Products.CMFCore.utils import getToolByName
 
 from upfront.classlist.vocabs import availableLanguages
-
-# Import conditionally, so we don't introduce a hard depdendency
-try:
-    from plone.i18n.normalizer.interfaces import IUserPreferredURLNormalizer
-    from plone.i18n.normalizer.interfaces import IURLNormalizer
-    URL_NORMALIZER = True
-except ImportError:
-    URL_NORMALIZER = False
-
 
 class IClassList(form.Schema):
     """ Description of ClassList content type
@@ -73,8 +63,7 @@ class RenameClassListView(grok.View):
     def __call__(self):
         """ Rename the current classlist """
 
-        title = self.request.get('title', '')
-        print title
+        new_title = self.request.get('title', '')
 
         # Validate
         # name/title must exist
@@ -98,17 +87,21 @@ class RenameClassListView(grok.View):
                                        'url'      : '#'})
 
         # Create/Modify
-        classlist.edit(title=title)
         if old_title != new_title:
-            # sanitise id for URL
-            #if URL_NORMALIZER:
-            #    classlist.id = queryUtility(IURLNormalizer).normalize(title)
+            classlists = classlist.aq_parent
+            classlist.edit(title=new_title)
+            name = INameChooser(classlists).chooseName(None, classlist)
+            classlists.manage_renameObject(classlist.id, name)
             msg = _("Classlist %s was modified" % classlist.Title())
+            url = "%s" % self.context.absolute_url()
+            return json.dumps({'result'   : 'info',
+                               'contents' : msg,
+                               'url'      : url })
 
-        url = "%s" % self.context.absolute_url()
+        msg = _("New name identical to old name")        
         return json.dumps({'result'   : 'info',
                            'contents' : msg,
-                           'url'      : url })
+                           'url'      : '#' })
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -142,7 +135,7 @@ class RemoveLearnersView(grok.View):
         catalog = getToolByName(self.context, 'portal_catalog')
         for remove_uid in remove_uids:
             brains = catalog(UID=remove_uid)
-            classlist._delObject(brains[0].id)
+            del classlist[brains[0].id]
 
         # success
         msg = _("Learner(s) removed from Classlist %s" % classlist.Title())

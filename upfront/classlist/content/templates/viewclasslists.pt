@@ -48,16 +48,16 @@
                         </td>
                         <td class="classlist-gender">
                             <select name="gender" id="classlist-gender">
-                                <option value="unknown">Unknown</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
+                                <option value="unknown" i18n:translate="gender_unknown">Unknown</option>
+                                <option value="male" i18n:translate="gender_male">Male</option>
+                                <option value="female" i18n:translate="gender_female">Female</option>
                             </select>
                         </td>
                         <td class="classlist-language">
                             <select name="homeLanguage" id="classlist-homeLanguage">
                                 <tal:fill tal:repeat="language view/languages">
                                     <option tal:attributes="value language"
-                                            tal:content="language" ></option>
+                                            tal:content="language" ></option>   
                                 </tal:fill>
                             </select>
                         </td>
