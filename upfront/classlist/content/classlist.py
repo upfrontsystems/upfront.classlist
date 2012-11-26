@@ -6,6 +6,8 @@ from zope.component import queryUtility
 from z3c.form.i18n import MessageFactory as _
 from plone.directives import dexterity, form
 
+from Products.CMFCore.utils import getToolByName
+
 from upfront.classlist.vocabs import availableLanguages
 
 # Import conditionally, so we don't introduce a hard depdendency
@@ -115,22 +117,35 @@ class RenameClassListView(grok.View):
 
 
 class RemoveLearnersView(grok.View):
-    """ Removes some learners from a classlist
+    """ Removes a selected number of learners from a classlist
     """
     grok.context(Interface)
-    grok.name('removelearners') 
+    grok.name('removelearners')
     grok.require('zope2.View')
 
     def __call__(self):
-        """ Remove some learners from a classlist """
+        """ Remove a selected number of learners from a classlist """
 
         remove_uids = self.request.get('remove_uids', '')
-        print remove_uids
 
-        # XXX ADD DELETE CODE AND CHECKS
+        if remove_uids == '':
+            msg = _("No Learners selected")
+            return json.dumps({'result'   : 'error',
+                               'contents' : msg,
+                               'url'      : '#' })
+
+        if isinstance(remove_uids, basestring):
+            # wrap string in a list for deleting mechanism to work
+            remove_uids = [remove_uids]
+
+        classlist = self.context
+        catalog = getToolByName(self.context, 'portal_catalog')
+        for remove_uid in remove_uids:
+            brains = catalog(UID=remove_uid)
+            classlist._delObject(brains[0].id)
 
         # success
-        msg = _("Learners removed from Classlist %s" % classlist.Title())
+        msg = _("Learner(s) removed from Classlist %s" % classlist.Title())
         return json.dumps({'result'   : 'info',
                            'contents' : msg,
                            'url'      : '#' })
