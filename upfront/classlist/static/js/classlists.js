@@ -5,7 +5,9 @@ $(function() {
         var learner_code = $('#classlist-code').attr('value')
         var learner_name = $('#classlist-name').attr('value')
         var learner_gender = $('#classlist-gender').attr('value')
-        var learner_lang = $('#classlist-homeLanguage').attr('value') 
+        var learner_lang_id = $('#classlist-homeLanguage').attr('value')
+        var learner_lang = 
+            $('#classlist-homeLanguage option[value='+learner_lang_id+']').html()  
 
         $.ajax({
             url: '@@addlearner',
@@ -13,6 +15,7 @@ $(function() {
                 'learner_code': learner_code,
                 'learner_name': learner_name,
                 'learner_gender': learner_gender,
+                'learner_lang_id': learner_lang_id,
                 'learner_lang': learner_lang
             },
             dataType: "json",
@@ -44,21 +47,6 @@ $(function() {
     });
 
 });
-
-function updateView(data) {
-
-    var result = data.result;
-    var contents = data.contents;
-    console.log(result)
-    console.log(contents)
-
-    if (result == 'info') {
-        console.log('INFO')
-    }
-    else if (result == 'error') {
-        console.log('ERROR')
-    }
-}
 
 function updateLearnerListingPostRemove(data) {
     // delete selected table entries    

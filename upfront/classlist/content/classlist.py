@@ -5,6 +5,8 @@ from zope.app.container.interfaces import INameChooser
 from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
+
+from z3c.relationfield import RelationValue
 from z3c.form.i18n import MessageFactory as _
 
 from plone.directives import dexterity, form
@@ -40,8 +42,9 @@ class View(dexterity.DisplayForm):
         notfinished = True;
         while notfinished:            
             try:
-                lang = language_vocab.next().title
-                lang_list.append(lang)
+                lang = language_vocab.next()
+                # add title and intid to lang_list
+                lang_list.append([lang.title, lang.value])
             except StopIteration:
                 notfinished = False;
 
@@ -156,6 +159,7 @@ class AddLearnerView(grok.View):
         learner_code = self.request.get('learner_code', '')
         learner_name = self.request.get('learner_name', '')
         learner_gender = self.request.get('learner_gender', '')
+        learner_lang_id = self.request.get('learner_lang_id', '')
         learner_lang = self.request.get('learner_lang', '')
 
         #XXX: At this moment we are assuming we got good input
@@ -165,11 +169,18 @@ class AddLearnerView(grok.View):
         # it is assumed that is.
 
         classlist = self.context
+        classlist.invokeFactory('upfront.classlist.content.learner',
+                                      learner_code, title=learner_code)
+        new_learner = classlist._getOb(learner_code)
 
+        new_learner.code = learner_code
+        new_learner.name = learner_name
+        new_learner.gender = learner_gender       
+        new_learner.home_language = RelationValue(int(learner_lang_id))
+        notify(ObjectModifiedEvent(new_learner))
 
-        # temporary until actual objects are created correctly with invokefactory
-        learner_id = 'TEMP_ID'
-        learner_editurl = 'www.google.com'
+        learner_id = new_learner.id
+        learner_editurl = '%s/edit' % new_learner.absolute_url()
 
         # success
         msg = _("New learner added")
