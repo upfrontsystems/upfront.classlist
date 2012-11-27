@@ -76,13 +76,16 @@ class UpfrontClassListTestBase(unittest.TestCase):
                                       'list2', title='List2')
         self.classlist2 = self.classlists._getOb('list2')
 
-        # add 2 learners to classlist1
+        # add 3 learners to classlist1
         self.classlist1.invokeFactory('upfront.classlist.content.learner',
                                       'learner1', title='Learner1')
         self.learner1 = self.classlist1._getOb('learner1')
         self.classlist1.invokeFactory('upfront.classlist.content.learner',
                                       'learner2', title='Learner2')
         self.learner2 = self.classlist1._getOb('learner2')
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner3', title='Learner3')
+        self.learner3 = self.classlist1._getOb('learner3')
 
 
 
