@@ -63,3 +63,27 @@ class UpfrontClassListTestBase(unittest.TestCase):
         self.topic3 = topictree._getOb('xhosa')
 
         self.topictree = topictree
+
+        # create a classlists folder for testing
+        self.portal.invokeFactory(type_name='Folder', id='classlists',
+                                  title='Classlists')
+        self.classlists = self.portal._getOb('classlists') 
+
+        self.classlists.invokeFactory('upfront.classlist.content.classlist',
+                                      'list1', title='List1')
+        self.classlist1 = self.classlists._getOb('list1')
+        self.classlists.invokeFactory('upfront.classlist.content.classlist',
+                                      'list2', title='List2')
+        self.classlist2 = self.classlists._getOb('list2')
+
+        # add 2 learners to classlist1
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner1', title='Learner1')
+        self.learner1 = self.classlist1._getOb('learner1')
+        self.classlist1.invokeFactory('upfront.classlist.content.learner',
+                                      'learner2', title='Learner2')
+        self.learner2 = self.classlist1._getOb('learner2')
+
+
+
+

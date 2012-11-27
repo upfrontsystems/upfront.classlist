@@ -1,15 +1,9 @@
 from zope.component import createObject
 from zope.component import queryUtility
 
-from plone.uuid.interfaces import IUUID
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
-
 from plone.dexterity.interfaces import IDexterityFTI
 
 from base import UpfrontClassListTestBase
-from base import PROJECTNAME
-from base import INTEGRATION_TESTING
 
 from upfront.classlist.content.learner import ILearner
 
