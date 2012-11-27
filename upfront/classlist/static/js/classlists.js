@@ -27,22 +27,27 @@ $(function() {
 
     $("#learner-remove").bind('click', function() {
 
-        var remove_list = [];
-        $('#learner-listing input:checked:enabled').each(function(index, para) { 
-            remove_list[index] = $(para).attr('value');
-        });
-        var title = $('#classlist-title').val()
+        if ( $('#learner-listing input:checked:enabled').size() != 0 ) {
 
-        $.ajax({
-            url: '@@removelearners',
-            data: {
-                'remove_ids': remove_list,
-            },
-            traditional: true, // needed to send js array via ajax
-            dataType: "json",
-            success: updateLearnerListingPostRemove,
-            error: displayError,
-        });
+            var remove_list = [];
+            $('#learner-listing input:checked:enabled').each(
+            function(index, para) { 
+                remove_list[index] = $(para).attr('value');
+            });
+            var title = $('#classlist-title').val()
+        
+            $.ajax({
+                url: '@@removelearners',
+                data: {
+                    'remove_ids': remove_list,
+                },
+                traditional: true, // needed to send js array via ajax
+                dataType: "json",
+                success: updateLearnerListingPostRemove,
+                error: displayError,
+            });
+
+        }
 
     });
 
