@@ -2,9 +2,6 @@ from five import grok
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
 
-from zope.app.intid.interfaces import IIntIds
-from zope.component import getUtility
-
 from zope.component.hooks import getSite
 from zope.schema.interfaces import IContextSourceBinder
 from zope.schema.vocabulary import SimpleVocabulary
