@@ -9,19 +9,25 @@ $(function() {
         var learner_lang = 
             $('#classlist-homeLanguage option[value='+learner_lang_id+']').html()  
 
-        $.ajax({
-            url: '@@addlearner',
-            data: {
-                'learner_code': learner_code,
-                'learner_name': learner_name,
-                'learner_gender': learner_gender,
-                'learner_lang_id': learner_lang_id,
-                'learner_lang': learner_lang
-            },
-            dataType: "json",
-            success: updateLearnerListingPostAdd,
-            error: displayError,
-        });
+        if (( learner_code != '' ) && ( learner_name != '' )) {
+
+            $.ajax({
+                url: '@@addlearner',
+                data: {
+                    'learner_code': learner_code,
+                    'learner_name': learner_name,
+                    'learner_gender': learner_gender,
+                    'learner_lang_id': learner_lang_id,
+                    'learner_lang': learner_lang
+                },
+                dataType: "json",
+                success: updateLearnerListingPostAdd,
+                error: displayError,
+            });
+        }
+        else {
+            // XXX: add field empty message
+        }
 
     });
 
@@ -60,28 +66,35 @@ function updateLearnerListingPostRemove(data) {
 
 function updateLearnerListingPostAdd(data) {
 
-    var id = data.learner_id;
-    var code = data.learner_code;
-    var name = data.learner_name;
-    var editurl = data.learner_editurl;
-    var gender = data.learner_gender;
-    var lang = data.learner_lang;
+    var status = data.status;
+    if ( status != 'error' ) {
+        var id = data.learner_id;
+        var code = data.learner_code;
+        var name = data.learner_name;
+        var editurl = data.learner_editurl;
+        var gender = data.learner_gender;
+        var lang = data.learner_lang;
 
-    // clone last table row
-    var row = $('#learner-listing tr:last').clone();
-    $('#learner-listing tr:last').after(row);
+        // clone last table row
+        var row = $('#learner-listing tr:last').clone();
+        $('#learner-listing tr:last').after(row);
 
-    //fix styling
-    $('#learner-listing tr:odd').removeClass("odd even").addClass("even")
-    $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
+        //fix styling
+        $('#learner-listing tr:odd').removeClass("odd even").addClass("even")
+        $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
 
-    // update contents of cloned row to reflect contents of json callback
-    $('#learner-listing tr:last #id-learner').attr('value',id)
-    $('#learner-listing tr:last td:nth-child(2)').html(code)
-    $('#learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
-    $('#learner-listing tr:last td:nth-child(3) a').html(name)
-    $('#learner-listing tr:last td:nth-child(4)').html(lang)
-    $('#learner-listing tr:last td:nth-child(5)').html(gender)
+        // update contents of cloned row to reflect contents of json callback
+        $('#learner-listing tr:last #id-learner').attr('value',id)
+        $('#learner-listing tr:last td:nth-child(2)').html(code)
+        $('#learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
+        $('#learner-listing tr:last td:nth-child(3) a').html(name)
+        $('#learner-listing tr:last td:nth-child(4)').html(lang)
+        $('#learner-listing tr:last td:nth-child(5)').html(gender)
+    }
+    else {
+        console.log(data.msg)
+    }
+    
 }
 
 function displayError(data) {

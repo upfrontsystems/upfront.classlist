@@ -162,14 +162,19 @@ class AddLearnerView(grok.View):
         learner_lang_id = self.request.get('learner_lang_id', '')
         learner_lang = self.request.get('learner_lang', '')
 
-        #XXX: At this moment we are assuming we got good input
-        # validation needs to be added either here or client side
-
-        #XXX: Add check that code is unique in the system, beyond this point
-        # it is assumed that is.
+        # validate that student code is unique
+        status = ''
+        catalog = getToolByName(self.context, 'portal_catalog')
+        result = catalog(id=learner_code)
+        if len(result) != 0:
+            status = 'error'
+            msg = _("Student code not unique")
+            return json.dumps({'status'          : status,
+                               'msg'             : msg})
 
         classlist = self.context
         classlist.invokeFactory('upfront.classlist.content.learner',
+
                                       learner_code, title=learner_code)
         new_learner = classlist._getOb(learner_code)
 
