@@ -57,8 +57,8 @@
                         <td class="classlist-language">
                             <select name="homeLanguage" id="classlist-homeLanguage">
                                 <tal:fill tal:repeat="language view/languages">
-                                    <option tal:attributes="value language"
-                                            tal:content="language" ></option>   
+                                    <option tal:attributes="value python:language[1]"
+                                            tal:content="python:language[0]" ></option>   
                                 </tal:fill>
                             </select>
                         </td>
