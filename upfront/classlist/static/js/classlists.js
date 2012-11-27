@@ -2,6 +2,8 @@ $(function() {
 
     $("#learner-add").bind('click', function() {
 
+        clearErrors();
+
         var learner_code = $('#classlist-code').attr('value')
         var learner_name = $('#classlist-name').attr('value')
         var learner_gender = $('#classlist-gender').attr('value')
@@ -26,12 +28,14 @@ $(function() {
             });
         }
         else {
-            // XXX: add field empty message
+            var data = {'status' : 'error', 'msg' : 'Field cannot be empty'}
+            showStatusMessage(data);
         }
 
     });
 
     $("#learner-remove").bind('click', function() {
+        clearErrors();
 
         if ( $('#learner-listing input:checked:enabled').size() != 0 ) {
 
@@ -60,14 +64,20 @@ $(function() {
 });
 
 function updateLearnerListingPostRemove(data) {
+
     // delete selected table entries    
     $('#learner-listing input:checked:enabled').parent().parent().remove()
+
+    //fix styling in table
+    $('#learner-listing tr:odd').removeClass("odd even").addClass("even")
+    $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
+
+    showStatusMessage(data);
 }
 
 function updateLearnerListingPostAdd(data) {
 
-    var status = data.status;
-    if ( status != 'error' ) {
+    if ( data.status != 'error' ) {
         var id = data.learner_id;
         var code = data.learner_code;
         var name = data.learner_name;
@@ -84,20 +94,37 @@ function updateLearnerListingPostAdd(data) {
         $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
 
         // update contents of cloned row to reflect contents of json callback
+
         $('#learner-listing tr:last #id-learner').attr('value',id)
         $('#learner-listing tr:last td:nth-child(2)').html(code)
         $('#learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
         $('#learner-listing tr:last td:nth-child(3) a').html(name)
         $('#learner-listing tr:last td:nth-child(4)').html(lang)
         $('#learner-listing tr:last td:nth-child(5)').html(gender)
+
+        showStatusMessage(data);
     }
     else {
-        console.log(data.msg)
+        showStatusMessage(data);
     }
     
 }
 
 function displayError(data) {
-    // XXX update with real error
-    console.log('AJAX ERROR')
+    var data = {'status' : 'error', 'msg' : 'ajax error'}
+    showStatusMessage(data);
 }
+
+function clearErrors() {
+    $('.portalMessage').removeClass('info error').hide()
+}
+
+function showStatusMessage(data) {
+    $('.portalMessage').addClass(data.status)
+    var msg = data.status.charAt(0).toUpperCase() + data.status.slice(1)
+    $('.portalMessage dt').html(msg)
+    $('.portalMessage dd').html(data.msg)
+    $('.portalMessage').show()
+}
+
+

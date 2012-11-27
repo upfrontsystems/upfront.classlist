@@ -11,6 +11,7 @@ from z3c.form.i18n import MessageFactory as _
 
 from plone.directives import dexterity, form
 
+from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName
 
 from upfront.classlist.vocabs import availableLanguages
@@ -88,7 +89,7 @@ class RenameClassListView(grok.View):
             parent = classlist.aq_inner.aq_parent
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
-                    msg = _("Name is not unique")                    
+                    msg = _("Name is not unique")
                     return
 
         # Create/Modify
@@ -169,12 +170,11 @@ class AddLearnerView(grok.View):
         if len(result) != 0:
             status = 'error'
             msg = _("Student code not unique")
-            return json.dumps({'status'          : status,
-                               'msg'             : msg})
+            return json.dumps({'status' : status,
+                               'msg'    : msg})
 
         classlist = self.context
         classlist.invokeFactory('upfront.classlist.content.learner',
-
                                       learner_code, title=learner_code)
         new_learner = classlist._getOb(learner_code)
 
@@ -188,13 +188,16 @@ class AddLearnerView(grok.View):
         learner_editurl = '%s/edit' % new_learner.absolute_url()
 
         # success
+        status = 'info'
         msg = _("New learner added")
         return json.dumps({'id'              : learner_id,
                            'learner_code'    : learner_code,
                            'learner_name'    : learner_name,
                            'learner_editurl' : learner_editurl,
                            'learner_gender'  : learner_gender,
-                           'learner_lang'    : learner_lang})
+                           'learner_lang'    : learner_lang,
+                           'status' : status,
+                           'msg'    : msg})
 
     def render(self):
         """ No-op to keep grok.View happy

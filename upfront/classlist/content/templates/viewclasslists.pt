@@ -11,6 +11,8 @@
 
     <div id="content-core">
 
+        <dl class="portalMessage hidden"><dt>Info</dt><dd>Info Message</dd></dl>
+
         <h1 i18n:translate="heading_edit_classlist">Edit Class List: <span tal:content="view/classlist"> </span></h1>
 
         <form tal:attributes="action view/getSaveUrl" id="classlist-edit-form" method="POST"> 
@@ -24,7 +26,7 @@
                         <input type="text" value="" id="classlist-title" name="rename.form.newtitle">
                     </td>
                     <td>
-                        <input type="submit" value="Save" id="classlist-save" name="form.button.save" >
+                        <input type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()" >
                     </td>
                 </tr>
                 </tbody>
