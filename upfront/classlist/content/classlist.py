@@ -36,6 +36,7 @@ class View(dexterity.DisplayForm):
 
     def languages(self):
         """ Return the contents languages dictionary as a list of strings
+            For each language return its string and intid value
         """
 
         language_vocab = availableLanguages(self.context).__iter__()
@@ -79,7 +80,7 @@ class RenameClassListView(grok.View):
         # name/title must exist
         if new_title == '':
             msg = _("Name is required")
-            return
+            return msg
 
         classlist = self.context
         old_title = classlist.Title()
@@ -90,7 +91,7 @@ class RenameClassListView(grok.View):
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
                     msg = _("Name is not unique")
-                    return
+                    return msg
 
         # Create/Modify
         if old_title != new_title:
@@ -103,7 +104,7 @@ class RenameClassListView(grok.View):
                    "%s" % self.context.absolute_url())
 
         msg = _("New name identical to old name")
-        return
+        return msg
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -175,7 +176,7 @@ class AddLearnerView(grok.View):
 
         classlist = self.context
         classlist.invokeFactory('upfront.classlist.content.learner',
-                                      learner_code, title=learner_code)
+                                      learner_code, title=learner_name)
         new_learner = classlist._getOb(learner_code)
 
         new_learner.code = learner_code
