@@ -1,6 +1,6 @@
 $(function() {
 
-    $("#learner-add").bind('click', function() {
+    $("#learner-add").live("click", function() {
 
         clearErrors();
 
@@ -34,17 +34,15 @@ $(function() {
 
     });
 
-    $("#learner-remove").bind('click', function() {
+    $("#learner-remove").live("click", function() {
         clearErrors();
 
-        if ( $('#learner-listing input:checked:enabled').size() != 0 ) {
+        if ( $('#div-learner-listing input:checked:enabled').size() != 0 ) {
 
             var remove_list = [];
-            $('#learner-listing input:checked:enabled').each(
             function(index, para) { 
                 remove_list[index] = $(para).attr('value');
             });
-            var title = $('#classlist-title').val()
         
             $.ajax({
                 url: '@@removelearners',
@@ -66,11 +64,19 @@ $(function() {
 function updateLearnerListingPostRemove(data) {
 
     // delete selected table entries    
-    $('#learner-listing input:checked:enabled').parent().parent().remove()
+    $('#div-learner-listing input:checked:enabled').parent().parent().remove()
 
-    //fix styling in table
-    $('#learner-listing tr:odd').removeClass("odd even").addClass("even")
-    $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
+    // if no entries now exist
+    if ( $('#div-learner-listing tr:last').length == 0 ) {
+       // no table entries exist yet to clone, use hidden template
+       var message = $('#no-learners-template').clone().html()
+       $('#div-learner-listing').html(message)
+    }
+    else {
+        //fix styling in table
+        $('#div-learner-listing tr:odd').removeClass("odd even").addClass("even")
+        $('#div-learner-listing tr:even').removeClass("odd even").addClass("odd")
+    }
 
     showStatusMessage(data);
 }
@@ -84,23 +90,36 @@ function updateLearnerListingPostAdd(data) {
         var editurl = data.learner_editurl;
         var gender = data.learner_gender;
         var lang = data.learner_lang;
-
-        // clone last table row
-        var row = $('#learner-listing tr:last').clone();
-        $('#learner-listing tr:last').after(row);
+    
+        if ( $('#div-learner-listing tr:last').length == 0 ) {
+            // no table entries exist yet to clone, use hidden template
+            var first_row = $('#table-row-template').clone().html()
+            $('#div-learner-listing').html(first_row)
+        }
+        else {
+            // clone last table row
+            var row = $('#div-learner-listing tr:last').clone();
+            $('#div-learner-listing tr:last').after(row);
+        }
 
         //fix styling
-        $('#learner-listing tr:odd').removeClass("odd even").addClass("even")
-        $('#learner-listing tr:even').removeClass("odd even").addClass("odd")
+        $('#div-learner-listing tr:odd').removeClass("odd even").addClass("even")
+        $('#div-learner-listing tr:even').removeClass("odd even").addClass("odd")
 
         // update contents of cloned row to reflect contents of json callback
 
-        $('#learner-listing tr:last #id-learner').attr('value',id)
-        $('#learner-listing tr:last td:nth-child(2)').html(code)
-        $('#learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
-        $('#learner-listing tr:last td:nth-child(3) a').html(name)
-        $('#learner-listing tr:last td:nth-child(4)').html(lang)
-        $('#learner-listing tr:last td:nth-child(5)').html(gender)
+        //checkbox
+        $('#div-learner-listing tr:last #id-learner').attr('value',id)
+        $('#div-learner-listing tr:last #id-learner').attr("checked", false)
+        // code
+        $('#div-learner-listing tr:last td:nth-child(2)').html(code)
+        // name link
+        $('#div-learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
+        $('#div-learner-listing tr:last td:nth-child(3) a').html(name)
+        // language
+        $('#div-learner-listing tr:last td:nth-child(4)').html(lang)
+        // gender
+        $('#div-learner-listing tr:last td:nth-child(5)').html(gender)
 
         showStatusMessage(data);
     }

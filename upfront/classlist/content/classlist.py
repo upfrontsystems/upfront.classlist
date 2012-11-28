@@ -126,8 +126,8 @@ class RemoveLearnersView(grok.View):
 
         if remove_ids == '':
             msg = _("No Learners selected")
-            return json.dumps({'result'   : 'error',
-                               'contents' : msg})
+            return json.dumps({'status'   : 'error',
+                               'msg' : msg})
 
         if isinstance(remove_ids, basestring):
             # wrap string in a list for deleting mechanism to work
@@ -139,8 +139,8 @@ class RemoveLearnersView(grok.View):
 
         # success
         msg = _("Learner(s) removed from Classlist %s" % classlist.Title())
-        return json.dumps({'result'   : 'info',
-                           'contents' : msg})
+        return json.dumps({'status'   : 'info',
+                           'msg' : msg})
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -191,7 +191,7 @@ class AddLearnerView(grok.View):
         # success
         status = 'info'
         msg = _("New learner added")
-        return json.dumps({'id'              : learner_id,
+        return json.dumps({'learner_id'      : learner_id,
                            'learner_code'    : learner_code,
                            'learner_name'    : learner_name,
                            'learner_editurl' : learner_editurl,

@@ -95,15 +95,15 @@ class TestRemoveLearnersView(UpfrontClassListTestBase):
     def test__call__(self):
         view = self.classlist1.restrictedTraverse('@@removelearners')
         self.request.set('remove_ids','')
-        test = json.dumps({'result'   : 'error',
-                           'contents' : "No Learners selected"})
+        test = json.dumps({'status'   : 'error',
+                           'msg' : "No Learners selected"})
         self.assertEqual(len(self.classlist1.getFolderContents()),3)
         self.assertEqual(view(),test)
         self.assertEqual(len(self.classlist1.getFolderContents()),3)
 
         self.request.set('remove_ids',['learner1', 'learner3'])
-        test2 = json.dumps({'result'   : 'info',
-                         'contents' :"Learner(s) removed from Classlist List1"})
+        test2 = json.dumps({'status'   : 'info',
+                            'msg' :"Learner(s) removed from Classlist List1"})
         self.assertEqual(view(),test2)
         self.assertEqual(len(self.classlist1.getFolderContents()),1)
 
@@ -130,7 +130,7 @@ class TestAddLearnerView(UpfrontClassListTestBase):
         self.request.set('learner_lang',lang.title)
 
         learner_editurl = '%s/001/edit' % self.classlist1.absolute_url()
-        test = json.dumps({'id'              : '001',
+        test = json.dumps({'learner_id'      : '001',
                            'learner_code'    : '001',
                            'learner_name'    : 'James',
                            'learner_editurl' : learner_editurl,

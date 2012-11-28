@@ -72,7 +72,7 @@
              </table>
         </div>
 
-        <div>
+        <div id="div-learner-listing">
             <tal:listing tal:condition="not:view/learners">
                 <h3 i18n:translate="message_no_learners">No learners added to this classlist.</h3>
             </tal:listing>
@@ -90,9 +90,31 @@
                         <td tal:content="learner/gender"></td>
                     </tr>
                 </table>
-            </tal:learners>
             <input id="learner-remove" type="submit" value="Remove" name="form.button.remove">
+            </tal:learners>
+            
         </div>
+
+            <!-- template for ajax table creation when no table exists -->
+            <div id="table-row-template" class="hidden">
+                <table class="listing" id="learner-listing">
+                    <tbody>
+                        <tr class="odd">
+                            <td><input type="checkbox" value="Code" id="id-learner" name="learners:string:list" title="Select"></td>
+                            <td>Code</td>
+                            <td><a href="http://url/edit">Name</a></td>
+                            <td>Language</td>
+                            <td>Gender</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input id="learner-remove" type="submit" value="Remove" name="form.button.remove">
+            </div>
+
+            <!-- template for ajax when all learners have been deleted -->
+            <div id="no-learners-template" class="hidden">
+                <h3 i18n:translate="message_no_learners">No learners added to this classlist.</h3>
+            </div>
 
     </div>
 
