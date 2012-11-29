@@ -144,7 +144,5 @@ function showStatusMessage(data) {
     var msg = data.status.charAt(0).toUpperCase() + data.status.slice(1)
     $('.portalMessage dt').html(msg)
     $('.portalMessage dd').html(data.msg)
-    $('.portalMessage').show()
+    $('.portalMessage').show()    
 }
-
-

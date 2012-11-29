@@ -68,21 +68,25 @@ class TestRenameClassListView(UpfrontClassListTestBase):
     def test__call__(self):
         view = self.classlist1.restrictedTraverse('@@renameclasslist')
 
+        # "Name is required"
         self.request.form['rename.form.newtitle'] = ''
         self.assertEqual(self.classlist1.id,'list1')        
-        self.assertEqual(view(),"Name is required")
+        self.assertEqual(view(),self.classlist1.absolute_url())
         self.assertEqual(self.classlist1.id,'list1')
 
+        # "Name is not unique"
         self.request.form['rename.form.newtitle'] = 'List2'
         self.assertEqual(self.classlist1.id,'list1')        
-        self.assertEqual(view(),"Name is not unique")
+        self.assertEqual(view(),self.classlist1.absolute_url())
         self.assertEqual(self.classlist1.id,'list1')        
 
+        # "New name identical to old name"
         self.request.form['rename.form.newtitle'] = 'List1'
         self.assertEqual(self.classlist1.id,'list1')        
-        self.assertEqual(view(),"New name identical to old name")
+        self.assertEqual(view(),self.classlist1.absolute_url())
         self.assertEqual(self.classlist1.id,'list1')        
 
+        # Successfull rename
         self.request.form['rename.form.newtitle'] = 'anotherlist1'
         self.assertEqual(self.classlist1.id,'list1')        
         self.assertEqual(view(),self.classlist1.absolute_url())

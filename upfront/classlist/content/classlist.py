@@ -80,7 +80,9 @@ class RenameClassListView(grok.View):
         # name/title must exist
         if new_title == '':
             msg = _("Name is required")
-            return msg
+            IStatusMessage(self.request).addStatusMessage(msg,"error")
+            return self.request.RESPONSE.redirect( \
+                                            "%s" % self.context.absolute_url())
 
         classlist = self.context
         old_title = classlist.Title()
@@ -91,7 +93,9 @@ class RenameClassListView(grok.View):
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
                     msg = _("Name is not unique")
-                    return msg
+                    IStatusMessage(self.request).addStatusMessage(msg,"error")
+                    return self.request.RESPONSE.redirect( \
+                                             "%s" % self.context.absolute_url())
 
         # Create/Modify
         if old_title != new_title:
@@ -100,11 +104,16 @@ class RenameClassListView(grok.View):
             name = INameChooser(classlists).chooseName(None, classlist)
             classlists.manage_renameObject(classlist.id, name)
             msg = _("Classlist %s was modified" % classlist.Title())
+            IStatusMessage(self.request).addStatusMessage(msg,"info")
+            IStatusMessage(self.request).addStatusMessage("well done","info")
+            IStatusMessage(self.request).addStatusMessage("well done","error")
             return self.request.RESPONSE.redirect( \
                    "%s" % self.context.absolute_url())
 
         msg = _("New name identical to old name")
-        return msg
+        IStatusMessage(self.request).addStatusMessage(msg,"error")
+        return self.request.RESPONSE.redirect( \
+                   "%s" % self.context.absolute_url())
 
     def render(self):
         """ No-op to keep grok.View happy
