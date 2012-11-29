@@ -31,6 +31,7 @@ setup(name='upfront.classlist',
           'plone.app.registry',          
           'plone.namedfile [blobs]',
           'collective.topictree',
+          'xlrd',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
