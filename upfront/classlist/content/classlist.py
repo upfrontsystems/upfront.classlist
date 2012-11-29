@@ -158,11 +158,11 @@ class AddLearnerView(grok.View):
     def __call__(self):
         """ Add a learner to a classlist """
 
-        learner_code = self.request.get('learner_code', '')
-        learner_name = self.request.get('learner_name', '')
-        learner_gender = self.request.get('learner_gender', '')
+        learner_code    = self.request.get('learner_code', '')
+        learner_name    = self.request.get('learner_name', '')
+        learner_gender  = self.request.get('learner_gender', '')
         learner_lang_id = self.request.get('learner_lang_id', '')
-        learner_lang = self.request.get('learner_lang', '')
+        learner_lang    = self.request.get('learner_lang', '')
 
         # validate that student code is unique
         status = ''
@@ -176,7 +176,8 @@ class AddLearnerView(grok.View):
 
         classlist = self.context
         classlist.invokeFactory('upfront.classlist.content.learner',
-                                      learner_code, title=learner_name)
+                                learner_code,
+                                title=learner_name)
         new_learner = classlist._getOb(learner_code)
 
         new_learner.code = learner_code

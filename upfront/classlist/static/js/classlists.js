@@ -40,10 +40,11 @@ $(function() {
         if ( $('#div-learner-listing input:checked:enabled').size() != 0 ) {
 
             var remove_list = [];
+            $('#div-learner-listing input:checked:enabled').each(
             function(index, para) { 
                 remove_list[index] = $(para).attr('value');
             });
-        
+
             $.ajax({
                 url: '@@removelearners',
                 data: {
