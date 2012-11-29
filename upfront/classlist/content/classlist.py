@@ -105,8 +105,6 @@ class RenameClassListView(grok.View):
             classlists.manage_renameObject(classlist.id, name)
             msg = _("Classlist %s was modified" % classlist.Title())
             IStatusMessage(self.request).addStatusMessage(msg,"info")
-            IStatusMessage(self.request).addStatusMessage("well done","info")
-            IStatusMessage(self.request).addStatusMessage("well done","error")
             return self.request.RESPONSE.redirect( \
                    "%s" % self.context.absolute_url())
 
