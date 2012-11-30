@@ -246,7 +246,7 @@ class UploadClassListSpreadsheetView(grok.View):
         # We could not find the learner, so we will create one, but first
         # get our data ducks in a row.
 
-        if gender_code not in ['Male','Female']:
+        if gender_code not in self.genders():
             msgid = _(u"learners_gender_not_recognized",
                 default=u"Learner: ${name} gender: ${gender} not recognized",
                 mapping={ u"name" : name, u"gender" : gender_code})
@@ -307,7 +307,7 @@ class UploadClassListSpreadsheetView(grok.View):
             to ensure translated versions are correctly checked against.
         """
 
-        gender_vocab = GENDER(self.context).__iter__()
+        gender_vocab = GENDER.__iter__()
         gender_list = []
         notfinished = True;
         while notfinished:            
