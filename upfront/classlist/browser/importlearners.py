@@ -26,6 +26,22 @@ class ImportLearnersView(grok.View):
     grok.template('importlearners')
     grok.require('zope2.View')
 
+    def languages(self):
+        """ Return the contents languages dictionary as a list of strings
+        """
+
+        language_vocab = availableLanguages(self.context).__iter__()
+        lang_list = []
+        notfinished = True;
+        while notfinished:            
+            try:
+                lang = language_vocab.next()
+                lang_list.append(lang.title)
+            except StopIteration:
+                notfinished = False;
+
+        return lang_list
+
 
 class UploadClassListSpreadsheetView(grok.View):
     """ Provide functionality to Import Learners from a spreadsheet
@@ -69,9 +85,24 @@ class UploadClassListSpreadsheetView(grok.View):
             self.add_portal_errors(errors)
             request.RESPONSE.redirect(import_view_url)
             return False
+       
+        # Add the learners from the sheet to the classlist
+        # At this stage if there are errors, we report on it, but we
+        # don't stop the process.
+        learner_errors = self.add_learners(classlist, sheet)
+        if learner_errors is not None:
+            errors.extend(learner_errors)
+            self.add_portal_errors(errors)
+
+        if len(errors) > 0:
+            self.add_portal_errors(errors)
 
         IStatusMessage(self.request).addStatusMessage("DEBUG: GOOD","info")
         request.RESPONSE.redirect(import_view_url)
+        
+        # Redirect to the new classlist if nothing went wrong.
+        request.RESPONSE.redirect('/'.join(classlist.getPhysicalPath()))
+        return True
 
     def get_validated_classlist_id(self, request):
         """ XXX Add description """
@@ -147,5 +178,45 @@ class UploadClassListSpreadsheetView(grok.View):
         for error in errors:
             msg = _(error)
             IStatusMessage(self.request).addStatusMessage(msg,"error")
+
+
+    def add_learners(self, classlist, sheet):
+        """ XXX Add Description """
+
+        errors = []
+        learners = []
+        row_count = sheet.nrows
+        for row_num in range(0, row_count):
+            error = None
+            learner = None
+            code = sheet.cell(row_num, 0).value
+            name = sheet.cell(row_num, 1).value
+            gender = sheet.cell(row_num, 2).value
+            language = sheet.cell(row_num, 3).value
+            error, learner = self.get_learner(classlist, code, name, gender,
+                                              language)
+            if learner is None:                
+                errors.append('Could not add learner %s' % name) # XXX add i18n
+                errors.append(error)
+            else:
+                learners.append(learner)
+        
+#        classlist.setLearners(learners)
+        notify(ObjectModifiedEvent(classlist))
+
+        return errors
+
+
+    def get_learner(self, classlist, code, name, gender_code, language_code):
+        """ First try to get the learner off the current class list.
+            Then look for the learner in the 'learners' folder.
+            If we can't find them there, we create a new one and set its
+            properties to those specified in the import data.
+
+            Note: At this stage the code will not overwrite existing learners.
+                  It just skips them.
+        """
+
+        return "DEBUG: not yet implemented", None
 
 

@@ -64,19 +64,9 @@
                 <li i18n:translate="description_helptext_valid_gender">Valid values for Gender are 'Male' and 'Female'</li>
                 <li i18n:translate="description_helptext_valid_lang">Valid values for Home Language are:
                     <ul>
-                        <li> Afrikaans </li>
-                        <li> English </li>
-                        <li> isiNdebele </li>
-                        <li> isiXhosa </li>
-                        <li> isiZulu </li>
-                        <li> seSotho sa Lebowa </li>
-                        <li> Sesotho </li>
-                        <li> Setswana </li>
-                        <li> siSwati </li>
-                        <li> Tshivenda </li>
-                        <li> Xitsonga </li>
-                        <li> Unknown </li>
-                        <li> Other </li>
+                        <tal:fill tal:repeat="language view/languages">
+                            <li tal:content="language"></li>   
+                        </tal:fill>
                     </ul>
                 </li>
                 <li i18n:translate="description_helptext_valid_example">An example of a valid row in the spreadsheet would be:<br/>
