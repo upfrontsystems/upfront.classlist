@@ -8,4 +8,9 @@
 
     <grok:grok package="." />
 
+  <browser:resource
+     name="classlist.xls"
+     file="classlist.xls"
+     />
+
 </configure>

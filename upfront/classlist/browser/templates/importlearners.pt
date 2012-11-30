@@ -9,51 +9,40 @@
 <body>
     <metal:main fill-slot="main">
 
-    <div id="content-core">
+    <div id="content-core"> 
 
         <h1 i18n:translate="heading_import_learners">Import learners</h1>
 
-        <p class="documentDescription">
+        <p class="documentDescription" i18n:translate="heading_import_learners_description">
            Here you can import learners via an Excel spreadsheet.
         </p>
             
         <form name="form" action="." method="post" enctype="multipart/form-data"
-                tal:attributes="action string:${here/absolute_url}/@@uploadClasslistSpreadsheet">
+              tal:attributes="action string:${here/absolute_url}/@@upload-classlist-spreadsheet">
+
             <div class="labels">
                 <div> 
-                <label for="new_classlist_id" 
-                    i18n:translate="label_create_new_class">
-                    Class name:
-                </label>
-                </div> 
+                    <label for="new_classlist_id" i18n:translate="label_create_new_class">Class name:</label>
+                </div>
                 <div> 
                     <label for="csv_file" i18n:translate="select_file">Use the learners in this file:</label>
-                </div> 
+                </div>
+                <div>&nbsp;</div>
+                <div>&nbsp;</div>
                 <div>&nbsp;</div>
             </div>
 
             <div class="edit_areas">
                 <div>
-                    <input type="text" name="new_classlist_id" class="required"
-                            id="new_classlist_id"/>
-                </div> 
-               
+                    <input type="text" name="new_classlist_id" class="required" id="new_classlist_id"/>
+                </div>
                 <div> 
                     <input type="file" id="csv_file" name="csv_file"/>
-                </div> 
-                <div> 
+                </div>
+                <div>
                     <br/>
-                    <input class="context"
-                        type="submit"
-                        value="Import the learners"
-                        name="submit"
-                        i18n:attributes="value"/>
-                        <!--tabindex=""
-                        tal:attributes="tabindex tabindex/next;"
-                        />-->
-
-                    <input type="hidden" name="current_url"
-                        tal:attributes="value here/absolute_url">
+                    <input class="context" type="submit" value="Import the learners" name="submit" i18n:attributes="value"/> 
+                    <input type="hidden" name="current_url" tal:attributes="value here/absolute_url">
                 </div> 
             </div>
                 
@@ -61,29 +50,19 @@
         <br/> 
 
         <div class="help_text">
-            <h3>Required spreadsheet format:</h3>
-            
+            <h3 i18n:translate="heading_helptext_required_format">Required spreadsheet format:</h3>            
             <ol>
-                <li>
-                    It must have only the following columns and in this sequence:
+                <li i18n:translate="description_helptext_columns">It must have only the following columns and in this sequence:
                     <ul>
-                        <li>Learner Code</li>
-                        <li>Full Name</li>
-                        <li>Gender</li>
-                        <li>Home Language</li>
+                        <li i18n:translate="description_helptext_column_learnercode">Learner Code</li>
+                        <li i18n:translate="description_helptext_column_name">Full Name</li>
+                        <li i18n:translate="description_helptext_column_gender">Gender</li>
+                        <li i18n:translate="description_helptext_column_language">Home Language</li>
                     </ul>
                 </li>
-
-                <li>
-                    No headers to columns, just the learner details
-                </li>
-
-                <li>
-                    Valid values for Gender are 'Male' and 'Female'
-                </li>
-
-                <li>
-                    Valid values for Home Language are:
+                <li i18n:translate="description_helptext_no_headers">No headers to columns, just the learner details</li>
+                <li i18n:translate="description_helptext_valid_gender">Valid values for Gender are 'Male' and 'Female'</li>
+                <li i18n:translate="description_helptext_valid_lang">Valid values for Home Language are:
                     <ul>
                         <li> Afrikaans </li>
                         <li> English </li>
@@ -100,16 +79,11 @@
                         <li> Other </li>
                     </ul>
                 </li>
-                <li>
-                    An example of a valid row in the spreadsheet would be:<br/>
-                    1234 | Thabo Msimang | Male | isiXhosa
-                </li>
-                <li>
-                    You can download an example of a valid class list import-spreadsheet here
-                </li>
+                <li i18n:translate="description_helptext_valid_example">An example of a valid row in the spreadsheet would be:<br/>
+                    1234 | Thabo Msimang | Male | isiXhosa</li>
+                <li i18n:translate="description_helptext_download">You can download an example of a valid class list import-spreadsheet here</li>
             </ol>
-            <a href="#"
-                tal:attributes="href string:${portal_url}/classlist.xls">Download an example class list here.</a>
+            <a href="#" tal:attributes="href string:${portal_url}/classlist.xls" i18n:translate="helptext_download_link">Download an example class list here.</a>
         </div>
 
     </div>
