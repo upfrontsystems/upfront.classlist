@@ -14,7 +14,6 @@
   <grok:grok package="." />
 
   <include package=".browser" />
-  <plone:static type="theme" directory="static" />
 
   <!-- Include the sub directory content -->
   <include package=".content" />
