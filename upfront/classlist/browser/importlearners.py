@@ -75,7 +75,7 @@ class UploadClassListSpreadsheetView(grok.View):
             return False
         
         # Get the classlist; new or old.
-        error, classlist = self.get_classlist(classlist_id, request)
+        error, classlist = self.get_classlist(classlist_id)
         if classlist is None:
             errors.append(error)
             self.add_portal_errors(errors)
@@ -142,12 +142,11 @@ class UploadClassListSpreadsheetView(grok.View):
             return _("Please supply a number, name, gender and language."), None
         return None, sheet
 
-    def get_classlist(self, classlist_id, request):
+    def get_classlist(self, classlist_id):
         """ returns an existing classlist, if a classlist does not exist
             it is created in the correct context (the classlists folder)
         """
 
-        error = None
         pc = getToolByName(self, 'portal_catalog')
         query = {'portal_type': 'upfront.classlist.content.classlist',
                  'Title': classlist_id
@@ -171,7 +170,7 @@ class UploadClassListSpreadsheetView(grok.View):
                                   title=classlist_id)
             classlist = context._getOb(classlist_id)
 
-            return error, classlist
+            return None, classlist
 
     def add_learners(self, classlist, sheet):
         """ Extracts learners from specified xls spreadsheet and adds

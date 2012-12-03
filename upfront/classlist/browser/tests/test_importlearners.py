@@ -29,7 +29,6 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
         view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
 
 
-
     def test_get_validated_classlist_id(self):
 
         view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
@@ -53,8 +52,20 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
 
     def test_get_classlist(self):
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
 
+        view = self.classlists.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+        #classlist exists
+        test_out = view.get_classlist('list1')
+        self.assertEqual(test_out[0],None)
+        self.assertEqual(test_out[1],self.classlist1)
+
+        #new classlist created
+        self.assertEqual(len(self.classlists.getFolderContents()),2)
+        test_out = view.get_classlist('list3')
+        self.assertEqual(test_out[0],None)
+        self.assertEqual(test_out[1],self.classlists._getOb('list3'))
+        self.assertEqual(len(self.classlists.getFolderContents()),3)
 
     def test_add_learners(self):
         view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
