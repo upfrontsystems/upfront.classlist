@@ -107,7 +107,7 @@ class UploadClassListSpreadsheetView(grok.View):
         new_classlist_id = request.get('new_classlist_id', None)
         if new_classlist_id is not None and len(new_classlist_id) > 0:
             return None, new_classlist_id
-        else:
+        else:        
             classlist_uid = request.get('classlist_uid' , None)
             if classlist_uid is None:
                 return _("Please indicate which class to use."), None
@@ -255,7 +255,7 @@ class UploadClassListSpreadsheetView(grok.View):
     
         if language_code not in self.languages()[0]:
             msgid = _(u"learners_language_not_recognized",
-                default=u"Learner: ${name} gender: ${language} not recognized",
+                default=u"Learner: ${name} language: ${language} not recognized",
                 mapping={ u"name" : name, u"language" : language_code})
             msg = self.context.translate(msgid)
             return msg, None

@@ -1,3 +1,4 @@
+import xlrd
 from upfront.classlist.tests.base import UpfrontClassListTestBase
 from upfront.classlist.vocabs import availableLanguages
 from upfront.classlist.vocabs import GENDER
@@ -24,6 +25,73 @@ class TestImportLearnersView(UpfrontClassListTestBase):
 class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
     """ Test UploadClassListSpreadsheet view """
 
+    def test__call__(self):
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+
+
+    def test_get_validated_classlist_id(self):
+
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+        test_out = view.get_validated_classlist_id(self.request)
+        self.assertEqual(test_out[0],'Please indicate which class to use.')
+        self.assertEqual(test_out[1],None)
+
+        self.request.set('classlist_uid','classlist1')
+        test_out = view.get_validated_classlist_id(self.request)
+        self.assertEqual(test_out[0],None)
+        self.assertEqual(test_out[1],'classlist1')
+        
+        self.request.set('new_classlist_id','classlist1')
+        test_out = view.get_validated_classlist_id(self.request)
+        self.assertEqual(test_out[0],None)
+        self.assertEqual(test_out[1],'classlist1')
+
+    def test_get_validated_learner_data(self):
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+
+    def test_get_classlist(self):
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+
+    def test_add_learners(self):
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+
+
+    def test_get_learner(self):
+
+        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+
+        #learner exists
+        test_out = view.get_learner(self.classlist1, 'learner1', 'Name', 'Male',
+                                    'English')        
+        self.assertEqual(test_out[0],u'Skipping existing learner: Name')
+        self.assertEqual(test_out[1],self.learner1)
+
+        #gender code bad
+        test_out = view.get_learner(self.classlist1, 'learner4', 'Name', 'Mal',
+                                    'English')        
+        self.assertEqual(test_out[0],
+                         u'Learner: Name gender: Mal not recognized')
+        self.assertEqual(test_out[1],None)
+
+        #language code bad
+        test_out = view.get_learner(self.classlist1, 'learner4', 'Name', 'Male',
+                                    'nglish')        
+        self.assertEqual(test_out[0],
+                         u'Learner: Name language: nglish not recognized')
+        self.assertEqual(test_out[1],None)
+
+        #create learner
+        self.assertEqual(len(self.classlist1.getFolderContents()),3)        
+        test_out = view.get_learner(self.classlist1, 'learner4', 
+                                    'Name', 'Male', 'English')
+        self.assertEqual(len(self.classlist1.getFolderContents()),4)
+        self.assertEqual(test_out[0],None)
+        self.assertEqual(test_out[1],self.classlist1._getOb('learner4'))
 
     def test_add_portal_errors(self):
 
