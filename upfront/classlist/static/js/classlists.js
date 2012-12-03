@@ -35,6 +35,7 @@ $(function() {
     });
 
     $("#learner-remove").live("click", function() {
+
         clearErrors();
 
         if ( $('#div-learner-listing input:checked:enabled').size() != 0 ) {
@@ -137,6 +138,8 @@ function displayError(data) {
 
 function clearErrors() {
     $('.portalMessage').removeClass('info error').hide()
+    // if there were more than one error boxes active, remove all but 1st one.
+    $('#content').find(".portalMessage:gt(0)").remove()
 }
 
 function showStatusMessage(data) {

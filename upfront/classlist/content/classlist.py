@@ -88,7 +88,7 @@ class RenameClassListView(grok.View):
         old_title = classlist.Title()
 
         # name/title must be unique
-        if old_title != new_title:
+        if old_title.lower() != new_title.lower():
             parent = classlist.aq_inner.aq_parent
             for alist in parent.objectValues():
                 if alist != self and alist.Title() == new_title:
@@ -98,7 +98,7 @@ class RenameClassListView(grok.View):
                                              "%s" % self.context.absolute_url())
 
         # Create/Modify
-        if old_title != new_title:
+        if old_title.lower() != new_title.lower():
             classlists = classlist.aq_parent
             classlist.edit(title=new_title)
             name = INameChooser(classlists).chooseName(None, classlist)
