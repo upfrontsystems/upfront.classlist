@@ -1,5 +1,7 @@
 from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
+from zope.event import notify
+from zope.lifecycleevent import ObjectModifiedEvent
 
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import PLONE_FIXTURE
@@ -87,6 +89,10 @@ class UpfrontClassListTestBase(unittest.TestCase):
                                       'learner3', title='Learner3')
         self.learner3 = self.classlist1._getOb('learner3')
 
-
-
+        # some details for learner1
+        self.learner1.code = '1'
+        self.learner1.name = 'John'
+        self.learner1.gender = 'Male'
+        # skip language because not needed for tests at the moment
+        notify(ObjectModifiedEvent(self.learner1))
 

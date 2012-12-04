@@ -1,9 +1,19 @@
+import os
 import xlrd
+
+from zope.publisher.browser import FileUpload
 from upfront.classlist.tests.base import UpfrontClassListTestBase
 from upfront.classlist.vocabs import availableLanguages
 from upfront.classlist.vocabs import GENDER
 
 from Products.statusmessages.interfaces import IStatusMessage
+
+class FieldStorageStub:
+
+    def __init__(self, file):
+        self.file = file
+        self.headers = {}
+        self.filename = 'foo.bar'
 
 class TestImportLearnersView(UpfrontClassListTestBase):
     """ Test methods in import-learners view """
@@ -50,6 +60,37 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
     def test_get_validated_learner_data(self):
         view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
 
+        testpath = os.path.dirname(__file__)
+
+        # good file
+        path = os.path.join(testpath,'test_classlist_1.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view.get_validated_learner_data(self.request)
+        self.assertEqual(test_out[0],None)
+    
+        # no learners in file
+        path = os.path.join(testpath,'test_classlist_2.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view.get_validated_learner_data(self.request)
+        self.assertEqual(test_out[0],'Please supply at least one learner.')
+        self.assertEqual(test_out[1],None)
+
+        # a learner with incorrect fields
+        path = os.path.join(testpath,'test_classlist_3.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view.get_validated_learner_data(self.request)
+        self.assertEqual(test_out[0],
+                        'Please supply a number, name, gender and language.')
+        self.assertEqual(test_out[1],None)
 
     def test_get_classlist(self):
 
@@ -70,7 +111,33 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
     def test_add_learners(self):
         view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
 
+        testpath = os.path.dirname(__file__)
 
+        # learner added
+        path = os.path.join(testpath,'test_classlist_4.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        contents = myUpload.read()
+        book = xlrd.open_workbook(file_contents=contents)
+        sheet = book.sheet_by_index(0)
+        self.assertEqual(len(self.classlist1.getFolderContents()),3)
+        test_out = view.add_learners(self.classlist1,sheet)
+        self.assertEqual(len(self.classlist1.getFolderContents()),6)
+        self.assertEqual(test_out,[])
+
+        # learner not added
+        path = os.path.join(testpath,'test_classlist_5.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        contents = myUpload.read()
+        book = xlrd.open_workbook(file_contents=contents)
+        sheet = book.sheet_by_index(0)
+        self.assertEqual(len(self.classlist1.getFolderContents()),6)
+        test_out = view.add_learners(self.classlist1,sheet)
+        self.assertEqual(len(self.classlist1.getFolderContents()),6)
+        self.assertEqual(test_out,['Skipping existing learner: John'])
 
     def test_get_learner(self):
 
