@@ -36,12 +36,108 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
     """ Test UploadClassListSpreadsheet view """
 
     def test__call__(self):
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
 
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
+        testpath = os.path.dirname(__file__)
+
+        #fail classlist
+        # no classlist_uid on request
+        self.request.set('classlist_uid','classlist1')
+        path = os.path.join(testpath,'blank_file.txt')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view()
+        self.assertEqual(test_out,False)
+        test = IStatusMessage(self.request).show()
+        self.assertEqual(test[0].type,'error')
+        self.assertEqual(test[0].message,'Please supply a valid file.')
+
+    def test__call__2(self):
+
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
+        testpath = os.path.dirname(__file__)
+
+        #fail learner data
+        # no learners in file
+        path = os.path.join(testpath,'test_classlist_1.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view()
+        self.assertEqual(test_out,False)        
+        test = IStatusMessage(self.request).show()
+        self.assertEqual(test[0].type,'error')
+        self.assertEqual(test[0].message,'Please indicate which class to use.')
+
+    def test__call__3(self):
+
+        # use topictrees as the incorrect context
+        view = self.topictrees.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
+        testpath = os.path.dirname(__file__)
+
+        # get classlist failed
+        self.request.set('classlist_uid','classlist1')
+        path = os.path.join(testpath,'test_classlist_1.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view()
+        self.assertEqual(test_out,False)
+        test = IStatusMessage(self.request).show()
+        self.assertEqual(test[0].type,'error')
+        self.assertEqual(test[0].message,
+                                'import-learners called from incorrect context')
+
+    def test__call__4(self):
+
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
+        testpath = os.path.dirname(__file__)
+
+        # some learner errors redirect to new (or existing) classlist
+        self.request.set('classlist_uid','classlist1')
+        # file that contains same learner as is already in the system
+        path = os.path.join(testpath,'test_classlist_5.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view()
+        self.assertEqual(test_out,True)
+        test = IStatusMessage(self.request).show()
+        self.assertEqual(test[0].type,'error')
+        self.assertEqual(test[0].message,'Skipping existing learner: John')
+
+    def test__call__5(self):
+
+        view = self.classlist1.restrictedTraverse(
+              '@@upload-classlist-spreadsheet')
+        testpath = os.path.dirname(__file__)
+
+        #nothing went wrong
+        self.request.set('classlist_uid','classlist1')
+        # good file
+        path = os.path.join(testpath,'test_classlist_1.xls')
+        spreadsheet_file = open(path,'rb')
+        aFieldStorage = FieldStorageStub(spreadsheet_file)
+        myUpload = FileUpload(aFieldStorage)
+        self.request['csv_file'] = myUpload
+        test_out = view()
+        self.assertEqual(test_out,True)
+        test = IStatusMessage(self.request).show()
+        self.assertEqual(test,[])
 
     def test_get_validated_classlist_id(self):
 
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
 
         test_out = view.get_validated_classlist_id(self.request)
         self.assertEqual(test_out[0],'Please indicate which class to use.')
@@ -58,7 +154,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
         self.assertEqual(test_out[1],'classlist1')
 
     def test_get_validated_learner_data(self):
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
 
         testpath = os.path.dirname(__file__)
 
@@ -94,7 +191,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
     def test_get_classlist(self):
 
-        view = self.classlists.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlists.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
 
         #classlist exists
         test_out = view.get_classlist('list1')
@@ -109,7 +207,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
         self.assertEqual(len(self.classlists.getFolderContents()),3)
 
     def test_add_learners(self):
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
 
         testpath = os.path.dirname(__file__)
 
@@ -141,7 +240,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
     def test_get_learner(self):
 
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
 
         #learner exists
         test_out = view.get_learner(self.classlist1, 'learner1', 'Name', 'Male',
@@ -173,7 +273,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
     def test_add_portal_errors(self):
 
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
         errors = ['Error1', 'Error2']
         view.add_portal_errors(errors)
         test = IStatusMessage(self.request).show()
@@ -183,7 +284,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
     def test_languages(self):
 
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
         language_vocab = availableLanguages(self.classlist1).__iter__()
         lang_list = []
         intid_list = []
@@ -200,7 +302,8 @@ class TestUploadClassListSpreadsheetView(UpfrontClassListTestBase):
 
     def test_genders(self):
 
-        view = self.classlist1.restrictedTraverse('@@upload-classlist-spreadsheet')
+        view = self.classlist1.restrictedTraverse(
+               '@@upload-classlist-spreadsheet')
         gender_vocab = GENDER.__iter__()
         gender_list = []
         notfinished = True;
