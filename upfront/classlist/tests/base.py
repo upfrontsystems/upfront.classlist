@@ -42,7 +42,6 @@ class UpfrontClassListTestBase(unittest.TestCase):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.intids = getUtility(IIntIds)
-        self.portal = self.layer['portal']
         self.request = self.layer['request']
 
         self.portal.invokeFactory(type_name='Folder', id='topictrees',
