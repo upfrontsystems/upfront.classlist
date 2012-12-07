@@ -33,7 +33,17 @@ class TestClassList(UpfrontClassListTestBase):
     def test_getSaveUrl(self):
         view = self.classlist1.restrictedTraverse('@@view')
         self.assertEqual(view.getSaveUrl(), 
-                         '%s/@@renameclasslist' % self.classlist1.absolute_url())
+                       '%s/@@renameclasslist' % self.classlist1.absolute_url())
+
+    def test_getExportUrl(self):
+        view = self.classlist1.restrictedTraverse('@@view')
+        self.assertEqual(view.getExportUrl(), 
+                       '%s/@@export-classlist' % self.classlist1.absolute_url())
+
+    def test_getBackUrl(self):
+        view = self.classlist1.restrictedTraverse('@@view')
+        self.assertEqual(view.getBackUrl(),
+                                    self.classlist1.aq_parent.absolute_url())
 
     def test_languages(self):
         view = self.classlist1.restrictedTraverse('@@view')

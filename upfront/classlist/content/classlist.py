@@ -1,6 +1,7 @@
 import json
 from five import grok
 
+from Acquisition import aq_parent
 from zope.app.container.interfaces import INameChooser
 from zope.interface import Interface
 from zope.event import notify
@@ -33,6 +34,14 @@ class View(dexterity.DisplayForm):
 
     def getSaveUrl(self):
         return '%s/@@renameclasslist' % self.context.absolute_url()
+
+    def getExportUrl(self):
+        """ return link to export view """
+        return '%s/@@export-classlist' % self.context.absolute_url()
+
+    def getBackUrl(self):
+        """ return link to parent folder view (classlists view) """
+        return self.context.aq_parent.absolute_url()
 
     def languages(self):
         """ Return the contents languages dictionary as a list of strings
