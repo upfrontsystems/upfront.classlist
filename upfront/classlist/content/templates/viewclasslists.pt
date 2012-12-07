@@ -78,7 +78,7 @@
             <tal:learners condition="view/learners">
                 <table id="learner-listing" class="listing">
                     <tr tal:repeat="learner view/learners">
-                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" tal:attributes="value learner/id">
+                        <td><input type="checkbox" title="Select" name="learners:string:list" id="id-learner" tal:attributes="value learner/id"></td>
                         <td tal:content="learner/code"></td>
                         <td>
                             <a tal:attributes="href string:${learner/absolute_url}/edit" 
