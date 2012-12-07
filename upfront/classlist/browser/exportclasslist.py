@@ -28,6 +28,8 @@ class ExportClassListView(grok.View):
         # It is safe to do this at the moment, because the view is bound
         # to IClasslist.
         contentFilter = {'portal_type': 'upfront.classlist.content.learner'}
+        contentFilter['sort_on'] = "id"
+        contentFilter['sort_order'] = "ascending"
         learners = self.context.getFolderContents(contentFilter,
                                                   full_objects=True)
         learner_csv = StringIO()
