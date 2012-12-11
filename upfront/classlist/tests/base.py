@@ -2,6 +2,7 @@ from zope.app.intid.interfaces import IIntIds
 from zope.component import getUtility
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
+from z3c.relationfield import RelationValue
 
 from plone.app.testing import PloneSandboxLayer
 from plone.app.testing import PLONE_FIXTURE
@@ -11,6 +12,8 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 
 from plone.testing import z2
+
+from upfront.classlist.vocabs import availableLanguages
 
 PROJECTNAME = "upfront.classlist"
 
@@ -92,6 +95,27 @@ class UpfrontClassListTestBase(unittest.TestCase):
         self.learner1.code = '1'
         self.learner1.name = 'John'
         self.learner1.gender = 'Male'
-        # skip language because not needed for tests at the moment
+
+        # some details for learner2
+        self.learner2.code = '2'
+        self.learner2.name = 'Jennie'
+        self.learner2.gender = 'Female'
+
+        # some details for learner3
+        self.learner3.code = '3'
+        self.learner3.name = 'Nomsa'
+        self.learner3.gender = 'Female'
+
+        language_vocab = availableLanguages(self.classlist1).__iter__()
+        #associate each language with a learner
+        lang = language_vocab.next()
+        self.learner1.home_language = RelationValue(lang.value)
+        lang = language_vocab.next()
+        self.learner2.home_language = RelationValue(lang.value)
+        lang = language_vocab.next()
+        self.learner3.home_language = RelationValue(lang.value)
+
         notify(ObjectModifiedEvent(self.learner1))
+        notify(ObjectModifiedEvent(self.learner2))
+        notify(ObjectModifiedEvent(self.learner3))
 
