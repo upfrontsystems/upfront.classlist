@@ -268,7 +268,7 @@ class UploadClassListSpreadsheetView(grok.View):
         new_learner.name = name
         new_learner.gender = gender_code       
         # get position of language in language vocab, using index get its 
-        # corresponding from initd list
+        # corresponding intid from initid list
         index = self.languages()[0].index(language_code)
         lang_intid = self.languages()[1][index]        
         new_learner.home_language = RelationValue(lang_intid)

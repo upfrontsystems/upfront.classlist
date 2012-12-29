@@ -1,0 +1,278 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-12-29 11:13+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: upfront.classlist\n"
+
+#: ./profiles/default/types/upfront.classlist.content.classlist.xml
+msgid "Class List"
+msgstr ""
+
+#: ./content/classlist.py:115
+msgid "Classlist %s was modified"
+msgstr ""
+
+#: ./browser/importlearners.py:207
+msgid "Could not add learner:"
+msgstr ""
+
+#: ./vocabs.py:14
+msgid "Female"
+msgstr ""
+
+#: ./content/learner.py:33
+msgid "Gender"
+msgstr ""
+
+#: ./content/learner.py:28
+msgid "Home Language"
+msgstr ""
+
+#: ./browser/templates/importlearners.pt:44
+msgid "Import the learners"
+msgstr ""
+
+#: ./profiles/default/types/upfront.classlist.content.learner.xml
+msgid "Learner"
+msgstr ""
+
+#: ./content/classlist.py:157
+msgid "Learner(s) removed from Classlist %s"
+msgstr ""
+
+#: ./vocabs.py:13
+msgid "Male"
+msgstr ""
+
+#: ./content/learner.py:22
+msgid "Name"
+msgstr ""
+
+#: ./content/classlist.py:104
+msgid "Name is not unique"
+msgstr ""
+
+#: ./content/classlist.py:91
+msgid "Name is required"
+msgstr ""
+
+#: ./content/classlist.py:210
+msgid "New learner added"
+msgstr ""
+
+#: ./content/classlist.py:120
+msgid "New name identical to old name"
+msgstr ""
+
+#: ./content/classlist.py:144
+msgid "No Learners selected"
+msgstr ""
+
+#: ./browser/importlearners.py:113
+msgid "Please indicate which class to use."
+msgstr ""
+
+#: ./browser/importlearners.py:142
+msgid "Please supply a number, name, gender and language."
+msgstr ""
+
+#: ./browser/importlearners.py:127
+msgid "Please supply a valid file."
+msgstr ""
+
+#: ./browser/importlearners.py:139
+msgid "Please supply at least one learner."
+msgstr ""
+
+#: ./browser/importlearners.py:134
+msgid "Please supply at least one work sheet."
+msgstr ""
+
+#: ./browser/importlearners.py:242
+msgid "Skipping existing learner"
+msgstr ""
+
+#: ./content/learner.py:17
+msgid "Student Code"
+msgstr ""
+
+#: ./content/classlist.py:189
+msgid "Student code not unique"
+msgstr ""
+
+#: ./browser/exportclasslist.py:72
+msgid "The class list has no learners."
+msgstr ""
+
+#. Default: "Here you can edit the class list and learners, or you can"
+#: ./content/templates/viewclasslists.pt:16
+msgid "description_classlists"
+msgstr ""
+
+#. Default: "Gender"
+#: ./browser/templates/importlearners.pt:59
+msgid "description_helptext_column_gender"
+msgstr ""
+
+#. Default: "Home Language"
+#: ./browser/templates/importlearners.pt:60
+msgid "description_helptext_column_language"
+msgstr ""
+
+#. Default: "Learner Code"
+#: ./browser/templates/importlearners.pt:57
+msgid "description_helptext_column_learnercode"
+msgstr ""
+
+#. Default: "Full Name"
+#: ./browser/templates/importlearners.pt:58
+msgid "description_helptext_column_name"
+msgstr ""
+
+#. Default: "It must have only the following columns and in this sequence: <ul> <li>x</li> <li>x</li> <li>x</li> <li>x</li> </ul>"
+#: ./browser/templates/importlearners.pt:60
+msgid "description_helptext_columns"
+msgstr ""
+
+#. Default: "You can download an example of a valid class list import-spreadsheet here"
+#: ./browser/templates/importlearners.pt:74
+msgid "description_helptext_download"
+msgstr ""
+
+#. Default: "No headers to columns, just the learner details"
+#: ./browser/templates/importlearners.pt:63
+msgid "description_helptext_no_headers"
+msgstr ""
+
+#. Default: "An example of a valid row in the spreadsheet would be:<br /> 1234 | Thabo Msimang | Male | isiXhosa"
+#: ./browser/templates/importlearners.pt:72
+msgid "description_helptext_valid_example"
+msgstr ""
+
+#. Default: "Valid values for Gender are 'Male' and 'Female'"
+#: ./browser/templates/importlearners.pt:64
+msgid "description_helptext_valid_gender"
+msgstr ""
+
+#. Default: "Valid values for Home Language are: <ul> <li>${DYNAMIC_CONTENT}</li> </ul>"
+#: ./browser/templates/importlearners.pt:68
+msgid "description_helptext_valid_lang"
+msgstr ""
+
+#. Default: "Female"
+#: ./content/templates/viewclasslists.pt:60
+msgid "gender_female"
+msgstr ""
+
+#. Default: "Male"
+#: ./content/templates/viewclasslists.pt:59
+msgid "gender_male"
+msgstr ""
+
+#. Default: "Unknown"
+#: ./content/templates/viewclasslists.pt:58
+msgid "gender_unknown"
+msgstr ""
+
+#. Default: "CLASS NAME"
+#: ./content/templates/viewclasslists.pt:26
+msgid "heading_classname"
+msgstr ""
+
+#. Default: "Edit Class List: <span>${DYNAMIC_CONTENT}</span>"
+#: ./content/templates/viewclasslists.pt:14
+msgid "heading_edit_classlist"
+msgstr ""
+
+#. Default: "Required spreadsheet format:"
+#: ./browser/templates/importlearners.pt:53
+msgid "heading_helptext_required_format"
+msgstr ""
+
+#. Default: "Import learners"
+#: ./browser/templates/importlearners.pt:14
+msgid "heading_import_learners"
+msgstr ""
+
+#. Default: "Here you can import learners via an Excel spreadsheet."
+#: ./browser/templates/importlearners.pt:16
+msgid "heading_import_learners_description"
+msgstr ""
+
+#. Default: "Download an example class list here."
+#: ./browser/templates/importlearners.pt:76
+msgid "helptext_download_link"
+msgstr ""
+
+#: ./browser/importlearners.py:165
+msgid "import-learners called from incorrect context"
+msgstr ""
+
+#. Default: "Class name:"
+#: ./browser/templates/importlearners.pt:25
+msgid "label_create_new_class"
+msgstr ""
+
+#. Default: "Learner: ${name} gender: ${gender} not recognized"
+#: ./browser/importlearners.py:249
+msgid "learners_gender_not_recognized"
+msgstr ""
+
+#. Default: "Learner: ${name} language: ${language} not recognized"
+#: ./browser/importlearners.py:256
+msgid "learners_language_not_recognized"
+msgstr ""
+
+#. Default: "export this class list."
+#: ./content/templates/viewclasslists.pt:17
+msgid "link_exportclasslist"
+msgstr ""
+
+#. Default: "click here to go back to the your list of classes."
+#: ./content/templates/viewclasslists.pt:19
+msgid "link_return_classlists"
+msgstr ""
+
+#. Default: "No learners added to this classlist."
+#: ./content/templates/viewclasslists.pt:81
+msgid "message_no_learners"
+msgstr ""
+
+#. Default: "Use the learners in this file:"
+#: ./browser/templates/importlearners.pt:28
+msgid "select_file"
+msgstr ""
+
+#. Default: "CODE"
+#: ./content/templates/viewclasslists.pt:44
+msgid "title_code"
+msgstr ""
+
+#. Default: "GENDER"
+#: ./content/templates/viewclasslists.pt:46
+msgid "title_gender"
+msgstr ""
+
+#. Default: "HOME LANGUAGE"
+#: ./content/templates/viewclasslists.pt:47
+msgid "title_home_language"
+msgstr ""
+
+#. Default: "LEARNER NAME"
+#: ./content/templates/viewclasslists.pt:45
+msgid "title_learner_name"
+msgstr ""
+
