@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-12-29 11:13+0000\n"
+"POT-Creation-Date: 2012-12-30 18:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -167,7 +167,7 @@ msgstr ""
 msgid "description_helptext_valid_gender"
 msgstr ""
 
-#. Default: "Valid values for Home Language are: <ul> <li>${DYNAMIC_CONTENT}</li> </ul>"
+#. Default: "Valid values for Home Language are: <ul> ${home_language} </ul>"
 #: ./browser/templates/importlearners.pt:68
 msgid "description_helptext_valid_lang"
 msgstr ""
@@ -192,7 +192,7 @@ msgstr ""
 msgid "heading_classname"
 msgstr ""
 
-#. Default: "Edit Class List: <span>${DYNAMIC_CONTENT}</span>"
+#. Default: "Edit Class List: ${classlist_title}"
 #: ./content/templates/viewclasslists.pt:14
 msgid "heading_edit_classlist"
 msgstr ""

@@ -65,7 +65,7 @@
                 <li i18n:translate="description_helptext_valid_lang">Valid values for Home Language are:
                     <ul>
                         <tal:fill tal:repeat="language view/languages">
-                            <li tal:content="language"></li>   
+                            <li i18n:name="home_language" tal:content="language"></li>   
                         </tal:fill>
                     </ul>
                 </li>
