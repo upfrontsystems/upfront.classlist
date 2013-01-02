@@ -30,7 +30,7 @@
                         <input type="text" value="" id="classlist-title" name="rename.form.newtitle">
                     </td>
                     <td>
-                        <input type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()" >
+                        <input class="allowMultiSubmit" type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()" >
                     </td>
                 </tr>
                 </tbody>
@@ -69,7 +69,7 @@
                             </select>
                         </td>
                         <td>
-                            <input id="learner-add" type="submit" value="Add" name="form.button.add">
+                            <input class="allowMultiSubmit" id="learner-add" type="submit" value="Add" name="form.button.add">
                         </td>
                     </tr>
                  </tbody>
@@ -112,7 +112,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <input id="learner-remove" type="submit" value="Remove" name="form.button.remove">
+                <input class="allowMultiSubmit" id="learner-remove" type="submit" value="Remove" name="form.button.remove">
             </div>
 
             <!-- template for ajax when all learners have been deleted -->
