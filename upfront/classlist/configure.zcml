@@ -7,30 +7,30 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="upfront.classlist">
 
-  <!-- Include configuration for dependencies listed in setup.py -->
-  <includeDependencies package="." />
+    <!-- Include configuration for dependencies listed in setup.py -->
+    <includeDependencies package="." />
+  
+    <!-- Grok the package to initialise schema interfaces and content classes -->
+    <grok:grok package="." />
+  
+    <include package=".browser" />
+  
+    <!-- Include the sub directory content -->
+    <include package=".content" />
 
-  <!-- Grok the package to initialise schema interfaces and content classes -->
-  <grok:grok package="." />
+    <i18n:registerTranslations directory="locales" />
+  
+    <!-- Register an extension profile to make the product installable
+         in Plone -->
 
-  <include package=".browser" />
+    <genericsetup:registerProfile
+        name="default"
+        title="Upfront ClassList Dexterity Content Types"
+        directory="profiles/default"
+        description="Extension profile for Upfront ClassList Dexterity Content Types"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        />
 
-  <!-- Include the sub directory content -->
-  <include package=".content" />
-
-  <i18n:registerTranslations directory="locales" />
-
-  <!-- Register an extension profile to make the product installable
-       in Plone -->
-
-  <genericsetup:registerProfile
-      name="default"
-      title="Upfront ClassList Dexterity Content Types"
-      directory="profiles/default"
-      description="Extension profile for Upfront ClassList Dexterity Content Types"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
-
-  <adapter factory=".relationdatamanager.RelationDataManager" />
+    <adapter factory=".relationdatamanager.RelationDataManager" />
 
 </configure>
