@@ -52,7 +52,7 @@
         <div class="help_text">
             <h3 i18n:translate="heading_helptext_required_format">Required spreadsheet format:</h3>            
             <ol>
-                <li i18n:translate="description_helptext_columns">It must have only the following columns and in this sequence:
+                <li><span i18n:translate="description_helptext_columns">It must have only the following columns and in this sequence:</span>
                     <ul>
                         <li i18n:translate="description_helptext_column_learnercode">Learner Code</li>
                         <li i18n:translate="description_helptext_column_name">Full Name</li>
@@ -62,10 +62,10 @@
                 </li>
                 <li i18n:translate="description_helptext_no_headers">No headers to columns, just the learner details</li>
                 <li i18n:translate="description_helptext_valid_gender">Valid values for Gender are 'Male' and 'Female'</li>
-                <li i18n:translate="description_helptext_valid_lang">Valid values for Home Language are:
+                <li><span i18n:translate="description_helptext_valid_lang">Valid values for Home Language are:</span>
                     <ul>
                         <tal:fill tal:repeat="language view/languages">
-                            <li i18n:name="home_language" tal:content="language"></li>   
+                            <li tal:content="language"></li>
                         </tal:fill>
                     </ul>
                 </li>

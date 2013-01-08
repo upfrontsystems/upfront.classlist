@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-12-30 18:45+0000\n"
-"PO-Revision-Date: 2012-12-30 21:40 +0200\n"
+"POT-Creation-Date: 2013-01-08 14:01+0000\n"
+"PO-Revision-Date: 2012-01-08 16:08+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,6 +13,10 @@ msgstr ""
 "Language-Name: Afrkaans\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.classlist\n"
+
+#: ./content/templates/viewclasslist.pt:73
+msgid "Add"
+msgstr "Voeg by"
 
 #: ./profiles/default/types/upfront.classlist.content.classlist.xml
 msgid "Class List"
@@ -98,6 +102,14 @@ msgstr "Verskaf asseblief ten minste een leerder."
 msgid "Please supply at least one work sheet."
 msgstr "Verskaf asseblief ten minste een werkblad."
 
+#: ./content/templates/viewclasslist.pt:98
+msgid "Remove"
+msgstr "Verwyder"
+
+#: ./content/templates/viewclasslist.pt:33
+msgid "Save"
+msgstr "Stoor"
+
 #: ./browser/importlearners.py:242
 msgid "Skipping existing learner"
 msgstr "Huppel bestaande leerder"
@@ -114,8 +126,13 @@ msgstr "Student kode nie uniek nie"
 msgid "The class list has no learners."
 msgstr "Die klaslys het geen leerders."
 
+#. Default: "If this is not the class list you wanted,"
+#: ./content/templates/viewclasslist.pt:18
+msgid "description_classlist_not_wanted"
+msgstr "As dit nie die klaslys wat U wou gehaad het is nie,"
+
 #. Default: "Here you can edit the class list and learners, or you can"
-#: ./content/templates/viewclasslists.pt:16
+#: ./content/templates/viewclasslist.pt:16
 msgid "description_classlists"
 msgstr "Hier kan jy die klaslys en leerders te wysig, of u kan"
 
@@ -139,10 +156,10 @@ msgstr "Leerder Kode"
 msgid "description_helptext_column_name"
 msgstr "Volle Naam"
 
-#. Default: "It must have only the following columns and in this sequence: <ul> <li>x</li> <li>x</li> <li>x</li> <li>x</li> </ul>"
-#: ./browser/templates/importlearners.pt:60
+#. Default: "It must have only the following columns and in this sequence:"
+#: ./browser/templates/importlearners.pt:55
 msgid "description_helptext_columns"
-msgstr "Dit moet net die volgende kolomme he en in hierdie volgorde: <ul> <li>x</li> <li>x</li> <li>x</li> <li>x</li> </ul>"
+msgstr "Dit moet net die volgende kolomme he en in hierdie volgorde:"
 
 #. Default: "You can download an example of a valid class list import-spreadsheet here"
 #: ./browser/templates/importlearners.pt:74
@@ -164,35 +181,35 @@ msgstr "N voorbeeld van 'n geldige ry in die sigblad sal wees: <br /> 1234 | Tha
 msgid "description_helptext_valid_gender"
 msgstr "Geldige waardes vir geslag is 'Manlik' en 'Vroulik'"
 
-#. Default: "Valid values for Home Language are: <ul> ${home_language} </ul>"
-#: ./browser/templates/importlearners.pt:68
+#. Default: "Valid values for Home Language are:"
+#: ./browser/templates/importlearners.pt:65
 msgid "description_helptext_valid_lang"
-msgstr "Geldige waardes vir Huistaal is: <ul> $ {home_language} </ ul>"
+msgstr "Geldige waardes vir Huistaal is:"
 
 #. Default: "Female"
-#: ./content/templates/viewclasslists.pt:60
+#: ./content/templates/viewclasslist.pt:61
 msgid "gender_female"
 msgstr "Vroulik"
 
 #. Default: "Male"
-#: ./content/templates/viewclasslists.pt:59
+#: ./content/templates/viewclasslist.pt:60
 msgid "gender_male"
 msgstr "Manlik"
 
 #. Default: "Unknown"
-#: ./content/templates/viewclasslists.pt:58
+#: ./content/templates/viewclasslist.pt:59
 msgid "gender_unknown"
 msgstr "Onbekend"
 
 #. Default: "CLASS NAME"
-#: ./content/templates/viewclasslists.pt:26
+#: ./content/templates/viewclasslist.pt:26
 msgid "heading_classname"
 msgstr "KLAS NAAM"
 
 #. Default: "Edit Class List: ${classlist_title}"
-#: ./content/templates/viewclasslists.pt:14
+#: ./content/templates/viewclasslist.pt:14
 msgid "heading_edit_classlist"
-msgstr "Redigeer Klas Lys: $ {classlist_title}"
+msgstr "Redigeer Klas Lys: ${classlist_title}"
 
 #. Default: "Required spreadsheet format:"
 #: ./browser/templates/importlearners.pt:53
@@ -234,17 +251,17 @@ msgid "learners_language_not_recognized"
 msgstr "Leerder: ${name} taal: ${language} nie erken nie"
 
 #. Default: "export this class list."
-#: ./content/templates/viewclasslists.pt:17
+#: ./content/templates/viewclasslist.pt:17
 msgid "link_exportclasslist"
-msgstr "Uitvoer hierdie klaslys."
+msgstr "hierdie klaslys uitvoer."
 
 #. Default: "click here to go back to the your list of classes."
-#: ./content/templates/viewclasslists.pt:19
+#: ./content/templates/viewclasslist.pt:19
 msgid "link_return_classlists"
 msgstr "klik hier om na jou lys van klasse terug te gaan."
 
 #. Default: "No learners added to this classlist."
-#: ./content/templates/viewclasslists.pt:81
+#: ./content/templates/viewclasslist.pt:82
 msgid "message_no_learners"
 msgstr "Geen leerder aan hierdie classlist bygevoeg."
 
@@ -254,22 +271,22 @@ msgid "select_file"
 msgstr "Gebruik om die leerders in hierdie lêer:"
 
 #. Default: "CODE"
-#: ./content/templates/viewclasslists.pt:44
+#: ./content/templates/viewclasslist.pt:45
 msgid "title_code"
 msgstr "KODE"
 
 #. Default: "GENDER"
-#: ./content/templates/viewclasslists.pt:46
+#: ./content/templates/viewclasslist.pt:47
 msgid "title_gender"
 msgstr "GESLAG"
 
 #. Default: "HOME LANGUAGE"
-#: ./content/templates/viewclasslists.pt:47
+#: ./content/templates/viewclasslist.pt:48
 msgid "title_home_language"
 msgstr "HUIS TAAL"
 
 #. Default: "LEARNER NAME"
-#: ./content/templates/viewclasslists.pt:45
+#: ./content/templates/viewclasslist.pt:46
 msgid "title_learner_name"
 msgstr "LEERDER NAAM"
 

@@ -15,7 +15,7 @@
 
         <span i18n:translate="description_classlists">Here you can edit the class list and learners, or you can</span>
         <a tal:attributes="href view/getExportUrl" i18n:translate="link_exportclasslist">export this class list.</a>
-        <span>If this is not the class list you wanted,</span>
+        <span i18n:translate="description_classlist_not_wanted">If this is not the class list you wanted,</span>
         <a tal:attributes="href view/getBackUrl" i18n:translate="link_return_classlists">click here to go back to the your list of classes.</a>
         <div>&nbsp;</div>
 
@@ -30,7 +30,8 @@
                         <input type="text" value="" id="classlist-title" name="rename.form.newtitle">
                     </td>
                     <td>
-                        <input class="allowMultiSubmit" type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()" >
+                        <input class="allowMultiSubmit" type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()"      
+                               i18n:attributes="value">
                     </td>
                 </tr>
                 </tbody>
@@ -69,7 +70,7 @@
                             </select>
                         </td>
                         <td>
-                            <input class="allowMultiSubmit" id="learner-add" type="submit" value="Add" name="form.button.add">
+                            <input class="allowMultiSubmit" id="learner-add" type="submit" value="Add" name="form.button.add" i18n:attributes="value">
                         </td>
                     </tr>
                  </tbody>
@@ -94,7 +95,7 @@
                         <td tal:content="learner/gender"></td>
                     </tr>
                 </table>
-            <input id="learner-remove" type="submit" value="Remove" name="form.button.remove">
+            <input id="learner-remove" type="submit" value="Remove" name="form.button.remove" i18n:attributes="value">
             </tal:learners>
             
         </div>
@@ -112,7 +113,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <input class="allowMultiSubmit" id="learner-remove" type="submit" value="Remove" name="form.button.remove">
+                <input class="allowMultiSubmit" id="learner-remove" type="submit" value="Remove" name="form.button.remove" i18n:attributes="value">
             </div>
 
             <!-- template for ajax when all learners have been deleted -->

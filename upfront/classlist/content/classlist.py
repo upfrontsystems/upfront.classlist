@@ -29,7 +29,7 @@ class ClassList(dexterity.Container):
 grok.templatedir('templates')
 class View(dexterity.DisplayForm):
     grok.context(IClassList)
-    grok.template('viewclasslists')
+    grok.template('viewclasslist')
     grok.require('zope2.View')
 
     def getSaveUrl(self):
