@@ -3,20 +3,17 @@ from cStringIO import StringIO
 from DateTime import DateTime
 
 from five import grok
-from z3c.form.i18n import MessageFactory as _
-
 from Products.statusmessages.interfaces import IStatusMessage
 
+from upfront.classlist import MessageFactory as _
 from upfront.classlist.content.classlist import IClassList
 
-grok.templatedir('templates')
 class ExportClassListView(grok.View):
     """ Export all learners from a classlist into a CSV file, do nothing if the
         class is empty.
     """
     grok.context(IClassList)
     grok.name('export-classlist')
-    grok.template('exportclasslist')
     grok.require('zope2.View')
 
     def __call__(self):
