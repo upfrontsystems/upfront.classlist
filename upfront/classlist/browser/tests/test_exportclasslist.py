@@ -3,7 +3,6 @@ from z3c.form.i18n import MessageFactory as _
 from Products.statusmessages.interfaces import IStatusMessage
 
 class TestExportClassListView(UpfrontClassListTestBase):
-
     """ Test ExportClassListView view """
 
     def test__call__(self):
