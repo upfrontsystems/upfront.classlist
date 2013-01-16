@@ -8,7 +8,7 @@ from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from z3c.relationfield import RelationValue
-from z3c.form.i18n import MessageFactory as _
+from upfront.classlist import MessageFactory as _
 
 from plone.directives import dexterity, form
 
