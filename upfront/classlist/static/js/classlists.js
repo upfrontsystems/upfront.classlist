@@ -61,8 +61,6 @@ $(function() {
 
     });
 
-});
-
 function updateLearnerListingPostRemove(data) {
 
     // delete selected table entries    
@@ -139,13 +137,21 @@ function displayError(data) {
 function clearErrors() {
     $('.portalMessage').removeClass('info error').hide()
     // if there were more than one error boxes active, remove all but 1st one.
-    $('#content').find(".portalMessage:gt(0)").remove()
+    $('#content').find(".portalMessage:gt(0)").remove() 
 }
 
 function showStatusMessage(data) {
+
+    if ( $('.portalMessage').length == 0 ) {
+        // if there is no portal message div in the template yet        
+        $('#content').prepend('<dl class="portalMessage"><dt></dt><dd></dd>'+
+                              '</dl>');
+    }
     $('.portalMessage').addClass(data.status)
     var msg = data.status.charAt(0).toUpperCase() + data.status.slice(1)
     $('.portalMessage dt').html(msg)
     $('.portalMessage dd').html(data.msg)
-    $('.portalMessage').show()    
+    $('.portalMessage').show()
 }
+
+});

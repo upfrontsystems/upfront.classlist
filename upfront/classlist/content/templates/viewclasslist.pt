@@ -95,7 +95,7 @@
                         <td tal:content="learner/gender"></td>
                     </tr>
                 </table>
-            <input id="learner-remove" type="submit" value="Remove" name="form.button.remove" i18n:attributes="value">
+            <input class="allowMultiSubmit" id="learner-remove" type="submit" value="Remove" name="form.button.remove" i18n:attributes="value">
             </tal:learners>
             
         </div>
