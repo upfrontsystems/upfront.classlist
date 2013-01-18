@@ -6,15 +6,13 @@ from zope.app.container.interfaces import INameChooser
 from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-
 from z3c.relationfield import RelationValue
-from upfront.classlist import MessageFactory as _
-
 from plone.directives import dexterity, form
 
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.CMFCore.utils import getToolByName
 
+from upfront.classlist import MessageFactory as _
 from upfront.classlist.vocabs import availableLanguages
 
 class IClassList(form.Schema):
@@ -139,11 +137,6 @@ class RemoveLearnersView(grok.View):
         """ Remove a selected number of learners from a classlist """
 
         remove_ids = self.request.get('remove_ids', '')
-
-        if remove_ids == '':
-            msg = _("No Learners selected")
-            return json.dumps({'status'   : 'error',
-                               'msg' : msg})
 
         if isinstance(remove_ids, basestring):
             # wrap string in a list for deleting mechanism to work
