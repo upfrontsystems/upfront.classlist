@@ -27,7 +27,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <input type="text" value="" id="classlist-title" name="rename.form.newtitle">
+                        <input type="text" id="classlist-title" name="rename.form.newtitle" tal:attributes="value view/classlist">
                     </td>
                     <td>
                         <input class="allowMultiSubmit" type="submit" value="Save" id="classlist-save" name="form.button.save" onclick="clearErrors()"      

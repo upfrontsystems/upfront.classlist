@@ -52,7 +52,7 @@ class ExportClassListView(grok.View):
             learner_csv.close()
 
             now = DateTime()
-            nice_filename = '%s_%s' % ('classlist_', now.strftime('%Y%m%d'))
+            nice_filename = 'classlist-%s' % self.context.title
 
             self.request.response.setHeader("Content-Disposition",
                                             "attachment; filename=%s.csv" % 

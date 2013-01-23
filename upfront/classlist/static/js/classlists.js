@@ -121,6 +121,10 @@ function updateLearnerListingPostAdd(data) {
         // gender
         $('#div-learner-listing tr:last td:nth-child(5)').html(gender)
 
+        // clear the learner code and name fields
+        $('#classlist-code').attr('value','')
+        $('#classlist-name').attr('value','')
+
         showStatusMessage(data);
     }
     else {
