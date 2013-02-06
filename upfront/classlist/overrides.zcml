@@ -1,0 +1,8 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    i18n_domain="upfront.classlist">
+
+    <adapter factory=".relationdatamanager.RelationDataManager" />
+
+</configure>
+
