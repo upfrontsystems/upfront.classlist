@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-01-08 14:01+0000\n"
+"POT-Creation-Date: 2013-02-26 14:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,8 +25,8 @@ msgstr ""
 msgid "Class List"
 msgstr ""
 
-#: ./content/classlist.py:115
-msgid "Classlist %s was modified"
+#: ./content/classlist.py:113
+msgid "Classlist was modified"
 msgstr ""
 
 #: ./browser/importlearners.py:207
@@ -35,6 +35,10 @@ msgstr ""
 
 #: ./vocabs.py:14
 msgid "Female"
+msgstr ""
+
+#: ./content/classlist.py:182
+msgid "Field cannot be empty"
 msgstr ""
 
 #: ./content/learner.py:33
@@ -53,8 +57,8 @@ msgstr ""
 msgid "Learner"
 msgstr ""
 
-#: ./content/classlist.py:157
-msgid "Learner(s) removed from Classlist %s"
+#: ./content/classlist.py:152
+msgid "Learner(s) removed from classlist"
 msgstr ""
 
 #: ./vocabs.py:13
@@ -65,24 +69,20 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ./content/classlist.py:104
+#: ./content/classlist.py:102
 msgid "Name is not unique"
 msgstr ""
 
-#: ./content/classlist.py:91
+#: ./content/classlist.py:89
 msgid "Name is required"
 msgstr ""
 
-#: ./content/classlist.py:210
+#: ./content/classlist.py:217
 msgid "New learner added"
 msgstr ""
 
-#: ./content/classlist.py:120
+#: ./content/classlist.py:118
 msgid "New name identical to old name"
-msgstr ""
-
-#: ./content/classlist.py:144
-msgid "No Learners selected"
 msgstr ""
 
 #: ./browser/importlearners.py:113
@@ -121,11 +121,11 @@ msgstr ""
 msgid "Student Code"
 msgstr ""
 
-#: ./content/classlist.py:189
+#: ./content/classlist.py:194
 msgid "Student code not unique"
 msgstr ""
 
-#: ./browser/exportclasslist.py:72
+#: ./browser/exportclasslist.py:69
 msgid "The class list has no learners."
 msgstr ""
 
@@ -189,6 +189,10 @@ msgstr ""
 msgid "description_helptext_valid_lang"
 msgstr ""
 
+#: ./content/classlist.py:181
+msgid "error"
+msgstr ""
+
 #. Default: "Female"
 #: ./content/templates/viewclasslist.pt:61
 msgid "gender_female"
@@ -236,6 +240,10 @@ msgstr ""
 
 #: ./browser/importlearners.py:165
 msgid "import-learners called from incorrect context"
+msgstr ""
+
+#: ./content/classlist.py:151
+msgid "info"
 msgstr ""
 
 #. Default: "Class name:"

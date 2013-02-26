@@ -11,26 +11,19 @@ $(function() {
         var learner_lang = 
             $('#classlist-homeLanguage option[value='+learner_lang_id+']').html()  
 
-        if (( learner_code != '' ) && ( learner_name != '' )) {
-
-            $.ajax({
-                url: '@@addlearner',
-                data: {
-                    'learner_code': learner_code,
-                    'learner_name': learner_name,
-                    'learner_gender': learner_gender,
-                    'learner_lang_id': learner_lang_id,
-                    'learner_lang': learner_lang
-                },
-                dataType: "json",
-                success: updateLearnerListingPostAdd,
-                error: displayError,
-            });
-        }
-        else {
-            var data = {'status' : 'error', 'msg' : 'Field cannot be empty'}
-            showStatusMessage(data);
-        }
+        $.ajax({
+            url: '@@addlearner',
+            data: {
+                'learner_code': learner_code,
+                'learner_name': learner_name,
+                'learner_gender': learner_gender,
+                'learner_lang_id': learner_lang_id,
+                'learner_lang': learner_lang
+            },
+            dataType: "json",
+            success: updateLearnerListingPostAdd,
+            error: displayError,
+        });
 
     });
 
@@ -152,7 +145,7 @@ function showStatusMessage(data) {
                               '</dl>');
     }
     $('.portalMessage').addClass(data.status)
-    var msg = data.status.charAt(0).toUpperCase() + data.status.slice(1)
+    var msg = data.status_msg.charAt(0).toUpperCase() + data.status_msg.slice(1)
     $('.portalMessage dt').html(msg)
     $('.portalMessage dd').html(data.msg)
     $('.portalMessage').show()

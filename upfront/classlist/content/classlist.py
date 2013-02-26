@@ -110,7 +110,7 @@ class RenameClassListView(grok.View):
             classlist.edit(title=new_title)
             name = INameChooser(classlists).chooseName(None, classlist)
             classlists.manage_renameObject(classlist.id, name)
-            msg = _("Classlist %s was modified" % classlist.Title())
+            msg = _("Classlist was modified")
             IStatusMessage(self.request).addStatusMessage(msg,"info")
             return self.request.RESPONSE.redirect( \
                    "%s" % self.context.absolute_url())
@@ -147,9 +147,12 @@ class RemoveLearnersView(grok.View):
             del classlist[remove_id]
 
         # success
-        msg = _("Learner(s) removed from Classlist %s" % classlist.Title())
-        return json.dumps({'status'   : 'info',
-                           'msg' : msg})
+        status = 'info' # class in the template
+        status_msg = self.context.translate(_('info')) # content string
+        msg = self.context.translate(_("Learner(s) removed from classlist"))
+        return json.dumps({'status' : status,
+                           'status_msg' : status_msg,
+                           'msg'    : msg})
 
     def render(self):
         """ No-op to keep grok.View happy
@@ -173,14 +176,24 @@ class AddLearnerView(grok.View):
         learner_lang_id = self.request.get('learner_lang_id', '')
         learner_lang    = self.request.get('learner_lang', '')
 
+        if learner_name == '' or learner_code == '':
+            status = 'error' # class in the template
+            status_msg = self.context.translate(_('error')) # content string
+            msg = self.context.translate(_("Field cannot be empty"))
+            return json.dumps({'status' : status,
+                               'status_msg' : status_msg,
+                               'msg'    : msg})
+
         # validate that student code is unique
         status = ''
         catalog = getToolByName(self.context, 'portal_catalog')
         result = catalog(id=learner_code)
         if len(result) != 0:
-            status = 'error'
-            msg = _("Student code not unique")
+            status = 'error' # class in the template
+            status_msg = self.context.translate(_('error')) # content string
+            msg = self.context.translate(_("Student code not unique"))
             return json.dumps({'status' : status,
+                               'status_msg' : status_msg,
                                'msg'    : msg})
 
         classlist = self.context
@@ -199,16 +212,18 @@ class AddLearnerView(grok.View):
         learner_editurl = '%s/edit' % new_learner.absolute_url()
 
         # success
-        status = 'info'
-        msg = _("New learner added")
+        status = 'info' # class in the template
+        status_msg = self.context.translate(_('info')) # content string
+        msg = self.context.translate(_("New learner added"))
         return json.dumps({'learner_id'      : learner_id,
                            'learner_code'    : learner_code,
                            'learner_name'    : learner_name,
                            'learner_editurl' : learner_editurl,
                            'learner_gender'  : learner_gender,
                            'learner_lang'    : learner_lang,
-                           'status' : status,
-                           'msg'    : msg})
+                           'status'     : status,
+                           'status_msg' : status_msg,
+                           'msg'        : msg})
 
     def render(self):
         """ No-op to keep grok.View happy
