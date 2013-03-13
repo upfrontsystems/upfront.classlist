@@ -68,7 +68,8 @@ class View(dexterity.DisplayForm):
         """ Return all the learners in the current classlist folder
         """
         contentFilter = {
-            'portal_type': 'upfront.classlist.content.learner'}
+            'portal_type': 'upfront.classlist.content.learner',
+            'sort_on': 'sortable_title'}
         return self.context.getFolderContents(contentFilter,full_objects=True)
 
 
