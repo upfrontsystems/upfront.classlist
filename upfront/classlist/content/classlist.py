@@ -30,14 +30,14 @@ class View(dexterity.DisplayForm):
     grok.template('viewclasslist')
     grok.require('zope2.View')
 
-    def getSaveUrl(self):
+    def save_url(self):
         return '%s/@@renameclasslist' % self.context.absolute_url()
 
-    def getExportUrl(self):
+    def export_url(self):
         """ return link to export view """
         return '%s/@@export-classlist' % self.context.absolute_url()
 
-    def getBackUrl(self):
+    def back_url(self):
         """ return link to parent folder view (classlists view) """
         return self.context.aq_parent.absolute_url()
 
@@ -145,7 +145,16 @@ class RemoveLearnersView(grok.View):
 
         classlist = self.context
         for remove_id in remove_ids:
-            del classlist[remove_id]
+            try:
+                del classlist[remove_id]
+            except:
+                # success
+                status = 'error' # class in the template
+                status_msg = self.context.translate(_('error')) # content string
+                msg = self.context.translate(_("Delete failed"))
+                return json.dumps({'status' : status,
+                                   'status_msg' : status_msg,
+                                   'msg'    : msg})
 
         # success
         status = 'info' # class in the template

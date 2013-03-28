@@ -30,19 +30,19 @@ class TestClassList(UpfrontClassListTestBase):
             IClassList.providedBy(new_object), 
             'class list provides wrong interface.')
 
-    def test_getSaveUrl(self):
+    def test_save_url(self):
         view = self.classlist1.restrictedTraverse('@@view')
-        self.assertEqual(view.getSaveUrl(), 
+        self.assertEqual(view.save_url(), 
                        '%s/@@renameclasslist' % self.classlist1.absolute_url())
 
-    def test_getExportUrl(self):
+    def test_export_url(self):
         view = self.classlist1.restrictedTraverse('@@view')
-        self.assertEqual(view.getExportUrl(), 
+        self.assertEqual(view.export_url(), 
                        '%s/@@export-classlist' % self.classlist1.absolute_url())
 
-    def test_getBackUrl(self):
+    def test_back_url(self):
         view = self.classlist1.restrictedTraverse('@@view')
-        self.assertEqual(view.getBackUrl(),
+        self.assertEqual(view.back_url(),
                                     self.classlist1.aq_parent.absolute_url())
 
     def test_languages(self):
@@ -109,15 +109,17 @@ class TestRemoveLearnersView(UpfrontClassListTestBase):
     def test__call__(self):
         view = self.classlist1.restrictedTraverse('@@removelearners')
         self.request.set('remove_ids','')
-        test = json.dumps({'status'   : 'error',
-                           'msg' : "No Learners selected"})
+        test = json.dumps({'status'     : 'error',
+                           'msg'        : "Delete failed",
+                           "status_msg" : "error"})
         self.assertEqual(len(self.classlist1.getFolderContents()),3)
         self.assertEqual(view(),test)
         self.assertEqual(len(self.classlist1.getFolderContents()),3)
 
         self.request.set('remove_ids',['learner1', 'learner3'])
-        test2 = json.dumps({'status'   : 'info',
-                            'msg' :"Learner(s) removed from Classlist List1"})
+        test2 = json.dumps({'status'     : 'info',
+                            'msg'        : "Learner(s) removed from classlist",
+                            'status_msg' : 'info',})
         self.assertEqual(view(),test2)
         self.assertEqual(len(self.classlist1.getFolderContents()),1)
 
@@ -144,14 +146,15 @@ class TestAddLearnerView(UpfrontClassListTestBase):
         self.request.set('learner_lang',lang.title)
 
         learner_editurl = '%s/001/edit' % self.classlist1.absolute_url()
-        test = json.dumps({'learner_id'      : '001',
+        test = json.dumps({'status'          : 'info',
+                           'learner_id'      : '001',
                            'learner_code'    : '001',
                            'learner_name'    : 'James',
                            'learner_editurl' : learner_editurl,
+                           'status_msg'      : 'info',
                            'learner_gender'  : 'Male',
                            'learner_lang'    : lang.title,
-                           'status' : 'info',
-                           'msg'    : "New learner added"})
+                           'msg'             : "New learner added"})
 
         self.assertEqual(len(self.classlist1.getFolderContents()),3)
         self.assertEqual(view(),test)
@@ -164,8 +167,9 @@ class TestAddLearnerView(UpfrontClassListTestBase):
         self.request.set('learner_lang_id',lang.value)
         self.request.set('learner_lang',lang.title)
  
-        test2 = json.dumps({'status' : 'error',
-                           'msg'    : "Student code not unique"})
+        test2 = json.dumps({'status'    : 'error',
+                           'msg'        : "Student code not unique",
+                           "status_msg" : "error" })
 
         self.assertEqual(view(),test2)
         self.assertEqual(len(self.classlist1.getFolderContents()),4)
