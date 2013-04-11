@@ -15,8 +15,6 @@
 
         <span i18n:translate="description_classlists">Here you can edit the class list and learners, or you can</span>
         <a tal:attributes="href view/export_url" i18n:translate="link_exportclasslist">export this class list.</a>
-        <span i18n:translate="description_classlist_not_wanted">If this is not the class list you wanted,</span>
-        <a tal:attributes="href view/back_url" i18n:translate="link_return_classlists">click here to go back to the your list of classes.</a>
         <div>&nbsp;</div>
 
         <form tal:attributes="action view/save_url" id="classlist-edit-form" method="POST"> 
