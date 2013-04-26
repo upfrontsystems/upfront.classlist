@@ -25,6 +25,7 @@ class ClassList(dexterity.Container):
 
 
 grok.templatedir('templates')
+
 class View(dexterity.DisplayForm):
     grok.context(IClassList)
     grok.template('viewclasslist')
@@ -71,6 +72,15 @@ class View(dexterity.DisplayForm):
             'portal_type': 'upfront.classlist.content.learner',
             'sort_on': 'sortable_title'}
         return self.context.getFolderContents(contentFilter,full_objects=True)
+
+    def male_str(self):
+        return self.context.translate(_("Male"))
+
+    def female_str(self):
+        return self.context.translate(_("Female"))
+
+    def unknown_str(self):
+        return self.context.translate(_("Unknown"))
 
 
 class RenameClassListView(grok.View):

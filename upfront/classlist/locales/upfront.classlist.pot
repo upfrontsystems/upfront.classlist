@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-02-26 14:21+0000\n"
+"POT-Creation-Date: 2013-04-26 08:25+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.classlist\n"
 
-#: ./content/templates/viewclasslist.pt:73
+#: ./content/templates/viewclasslist.pt:74
 msgid "Add"
 msgstr ""
 
@@ -25,7 +25,7 @@ msgstr ""
 msgid "Class List"
 msgstr ""
 
-#: ./content/classlist.py:113
+#: ./content/classlist.py:124
 msgid "Classlist was modified"
 msgstr ""
 
@@ -33,11 +33,16 @@ msgstr ""
 msgid "Could not add learner:"
 msgstr ""
 
+#: ./content/classlist.py:164
+msgid "Delete failed"
+msgstr ""
+
+#: ./content/classlist.py:80
 #: ./vocabs.py:14
 msgid "Female"
 msgstr ""
 
-#: ./content/classlist.py:182
+#: ./content/classlist.py:202
 msgid "Field cannot be empty"
 msgstr ""
 
@@ -57,10 +62,11 @@ msgstr ""
 msgid "Learner"
 msgstr ""
 
-#: ./content/classlist.py:152
+#: ./content/classlist.py:172
 msgid "Learner(s) removed from classlist"
 msgstr ""
 
+#: ./content/classlist.py:77
 #: ./vocabs.py:13
 msgid "Male"
 msgstr ""
@@ -69,19 +75,19 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: ./content/classlist.py:102
+#: ./content/classlist.py:113
 msgid "Name is not unique"
 msgstr ""
 
-#: ./content/classlist.py:89
+#: ./content/classlist.py:100
 msgid "Name is required"
 msgstr ""
 
-#: ./content/classlist.py:217
+#: ./content/classlist.py:237
 msgid "New learner added"
 msgstr ""
 
-#: ./content/classlist.py:118
+#: ./content/classlist.py:129
 msgid "New name identical to old name"
 msgstr ""
 
@@ -105,11 +111,11 @@ msgstr ""
 msgid "Please supply at least one work sheet."
 msgstr ""
 
-#: ./content/templates/viewclasslist.pt:98
+#: ./content/templates/viewclasslist.pt:99
 msgid "Remove"
 msgstr ""
 
-#: ./content/templates/viewclasslist.pt:33
+#: ./content/templates/viewclasslist.pt:31
 msgid "Save"
 msgstr ""
 
@@ -121,7 +127,7 @@ msgstr ""
 msgid "Student Code"
 msgstr ""
 
-#: ./content/classlist.py:194
+#: ./content/classlist.py:214
 msgid "Student code not unique"
 msgstr ""
 
@@ -129,9 +135,8 @@ msgstr ""
 msgid "The class list has no learners."
 msgstr ""
 
-#. Default: "If this is not the class list you wanted,"
-#: ./content/templates/viewclasslist.pt:18
-msgid "description_classlist_not_wanted"
+#: ./content/classlist.py:83
+msgid "Unknown"
 msgstr ""
 
 #. Default: "Here you can edit the class list and learners, or you can"
@@ -189,7 +194,7 @@ msgstr ""
 msgid "description_helptext_valid_lang"
 msgstr ""
 
-#: ./content/classlist.py:181
+#: ./content/classlist.py:163
 msgid "error"
 msgstr ""
 
@@ -199,17 +204,17 @@ msgid "gender_female"
 msgstr ""
 
 #. Default: "Male"
-#: ./content/templates/viewclasslist.pt:60
+#: ./content/templates/viewclasslist.pt:59
 msgid "gender_male"
 msgstr ""
 
 #. Default: "Unknown"
-#: ./content/templates/viewclasslist.pt:59
+#: ./content/templates/viewclasslist.pt:57
 msgid "gender_unknown"
 msgstr ""
 
 #. Default: "CLASS NAME"
-#: ./content/templates/viewclasslist.pt:26
+#: ./content/templates/viewclasslist.pt:24
 msgid "heading_classname"
 msgstr ""
 
@@ -242,7 +247,7 @@ msgstr ""
 msgid "import-learners called from incorrect context"
 msgstr ""
 
-#: ./content/classlist.py:151
+#: ./content/classlist.py:171
 msgid "info"
 msgstr ""
 
@@ -266,13 +271,8 @@ msgstr ""
 msgid "link_exportclasslist"
 msgstr ""
 
-#. Default: "click here to go back to the your list of classes."
-#: ./content/templates/viewclasslist.pt:19
-msgid "link_return_classlists"
-msgstr ""
-
 #. Default: "No learners added to this classlist."
-#: ./content/templates/viewclasslist.pt:82
+#: ./content/templates/viewclasslist.pt:83
 msgid "message_no_learners"
 msgstr ""
 
@@ -282,22 +282,22 @@ msgid "select_file"
 msgstr ""
 
 #. Default: "CODE"
-#: ./content/templates/viewclasslist.pt:45
+#: ./content/templates/viewclasslist.pt:43
 msgid "title_code"
 msgstr ""
 
 #. Default: "GENDER"
-#: ./content/templates/viewclasslist.pt:47
+#: ./content/templates/viewclasslist.pt:45
 msgid "title_gender"
 msgstr ""
 
 #. Default: "HOME LANGUAGE"
-#: ./content/templates/viewclasslist.pt:48
+#: ./content/templates/viewclasslist.pt:46
 msgid "title_home_language"
 msgstr ""
 
 #. Default: "LEARNER NAME"
-#: ./content/templates/viewclasslist.pt:46
+#: ./content/templates/viewclasslist.pt:44
 msgid "title_learner_name"
 msgstr ""
 
