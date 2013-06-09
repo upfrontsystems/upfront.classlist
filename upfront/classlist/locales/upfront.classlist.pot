@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-26 08:25+0000\n"
+"POT-Creation-Date: 2013-06-09 17:09+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -38,6 +38,7 @@ msgid "Delete failed"
 msgstr ""
 
 #: ./content/classlist.py:80
+#: ./content/templates/viewclasslist.pt:61
 #: ./vocabs.py:14
 msgid "Female"
 msgstr ""
@@ -46,10 +47,12 @@ msgstr ""
 msgid "Field cannot be empty"
 msgstr ""
 
+#: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:33
 msgid "Gender"
 msgstr ""
 
+#: ./browser/templates/importlearners.pt:60
 #: ./content/learner.py:28
 msgid "Home Language"
 msgstr ""
@@ -67,6 +70,7 @@ msgid "Learner(s) removed from classlist"
 msgstr ""
 
 #: ./content/classlist.py:77
+#: ./content/templates/viewclasslist.pt:59
 #: ./vocabs.py:13
 msgid "Male"
 msgstr ""
@@ -136,22 +140,13 @@ msgid "The class list has no learners."
 msgstr ""
 
 #: ./content/classlist.py:83
+#: ./content/templates/viewclasslist.pt:57
 msgid "Unknown"
 msgstr ""
 
 #. Default: "Here you can edit the class list and learners, or you can"
 #: ./content/templates/viewclasslist.pt:16
 msgid "description_classlists"
-msgstr ""
-
-#. Default: "Gender"
-#: ./browser/templates/importlearners.pt:59
-msgid "description_helptext_column_gender"
-msgstr ""
-
-#. Default: "Home Language"
-#: ./browser/templates/importlearners.pt:60
-msgid "description_helptext_column_language"
 msgstr ""
 
 #. Default: "Learner Code"
@@ -196,21 +191,6 @@ msgstr ""
 
 #: ./content/classlist.py:163
 msgid "error"
-msgstr ""
-
-#. Default: "Female"
-#: ./content/templates/viewclasslist.pt:61
-msgid "gender_female"
-msgstr ""
-
-#. Default: "Male"
-#: ./content/templates/viewclasslist.pt:59
-msgid "gender_male"
-msgstr ""
-
-#. Default: "Unknown"
-#: ./content/templates/viewclasslist.pt:57
-msgid "gender_unknown"
 msgstr ""
 
 #. Default: "CLASS NAME"

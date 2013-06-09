@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-04-26 08:25+0000\n"
+"POT-Creation-Date: 2013-06-09 17:09+0000\n"
 "PO-Revision-Date: 2012-02-26 16:21+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -35,6 +35,7 @@ msgid "Delete failed"
 msgstr "Werwyder misluk"
 
 #: ./content/classlist.py:80
+#: ./content/templates/viewclasslist.pt:61
 #: ./vocabs.py:14
 msgid "Female"
 msgstr "Vroulik"
@@ -43,10 +44,12 @@ msgstr "Vroulik"
 msgid "Field cannot be empty"
 msgstr "Veld mag nie leeg wees nie"
 
+#: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:33
 msgid "Gender"
 msgstr "Geslag"
 
+#: ./browser/templates/importlearners.pt:60
 #: ./content/learner.py:28
 msgid "Home Language"
 msgstr "Huistaal"
@@ -64,6 +67,7 @@ msgid "Learner(s) removed from classlist"
 msgstr "Leerder(s) van klaslys werwyder"
 
 #: ./content/classlist.py:77
+#: ./content/templates/viewclasslist.pt:59
 #: ./vocabs.py:13
 msgid "Male"
 msgstr "Manlik"
@@ -133,6 +137,7 @@ msgid "The class list has no learners."
 msgstr "Die klaslys het geen leerders."
 
 #: ./content/classlist.py:83
+#: ./content/templates/viewclasslist.pt:57
 msgid "Unknown"
 msgstr "Onbekend"
 
@@ -140,16 +145,6 @@ msgstr "Onbekend"
 #: ./content/templates/viewclasslist.pt:16
 msgid "description_classlists"
 msgstr "Hier kan jy die klaslys en leerders te wysig, of u kan"
-
-#. Default: "Gender"
-#: ./browser/templates/importlearners.pt:59
-msgid "description_helptext_column_gender"
-msgstr "Geslag"
-
-#. Default: "Home Language"
-#: ./browser/templates/importlearners.pt:60
-msgid "description_helptext_column_language"
-msgstr "Huistaal"
 
 #. Default: "Learner Code"
 #: ./browser/templates/importlearners.pt:57
@@ -194,21 +189,6 @@ msgstr "Geldige waardes vir Huistaal is:"
 #: ./content/classlist.py:163
 msgid "error"
 msgstr "fout"
-
-#. Default: "Female"
-#: ./content/templates/viewclasslist.pt:61
-msgid "gender_female"
-msgstr "Vroulik"
-
-#. Default: "Male"
-#: ./content/templates/viewclasslist.pt:59
-msgid "gender_male"
-msgstr "Manlik"
-
-#. Default: "Unknown"
-#: ./content/templates/viewclasslist.pt:57
-msgid "gender_unknown"
-msgstr "Onbekend"
 
 #. Default: "CLASS NAME"
 #: ./content/templates/viewclasslist.pt:24

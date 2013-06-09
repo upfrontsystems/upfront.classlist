@@ -55,11 +55,11 @@
                         <td class="classlist-gender">
                             <select name="gender" id="classlist-gender">
                                 <option tal:attributes="value view/unknown_str"
-                                        i18n:translate="gender_unknown">Unknown</option>
+                                        i18n:translate="Unknown">Unknown</option>
                                 <option tal:attributes="value view/male_str" 
-                                        i18n:translate="gender_male">Male</option>
+                                        i18n:translate="Male">Male</option>
                                 <option tal:attributes="value view/female_str" 
-                                        i18n:translate="gender_female">Female</option>
+                                        i18n:translate="Female">Female</option>
                             </select>
                         </td>
                         <td class="classlist-language">
