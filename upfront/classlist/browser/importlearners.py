@@ -110,7 +110,7 @@ class UploadClassListSpreadsheetView(grok.View):
         else:        
             classlist_uid = request.get('classlist_uid' , None)
             if classlist_uid is None:
-                return _("Please indicate which class to use."), None
+                return _("Please indicate which class to use"), None
             else:
                 return None, classlist_uid
 
@@ -124,22 +124,22 @@ class UploadClassListSpreadsheetView(grok.View):
         contents = xl_file.read()
         xl_file.close()
         if contents is None or len(contents) < 1:
-            return _("Please supply a valid file."), None 
+            return _("Please supply a valid file"), None 
         
         # Get the spreadsheet
         book = xlrd.open_workbook(file_contents=contents)
 
         # If we don't have a worksheet, we cannot continue.
         if book.sheets() < 1:
-            return _("Please supply at least one work sheet."), None
+            return _("Please supply at least one work sheet"), None
 
         sheet = book.sheet_by_index(0)
         # We must have at least one learner.
         if sheet.nrows < 1:
-            return _("Please supply at least one learner."), None
+            return _("Please supply at least one learner"), None
         # We must have at least number and name for the new learner.
         if sheet.ncols < 4:
-            return _("Please supply a number, name, gender and language."), None
+            return _("Please supply a number, name, gender and language"), None
         return None, sheet
 
     def get_classlist(self, classlist_id):
