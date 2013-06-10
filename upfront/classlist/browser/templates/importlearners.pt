@@ -71,10 +71,10 @@
                 </li>
                 <li i18n:translate="description_helptext_valid_example">An example of a valid row in the spreadsheet would be:<br/>
                     1234 | Thabo Msimang | Male | isiXhosa</li>
-                <li i18n:translate="description_helptext_download">You can download an example of a valid class list import-spreadsheet here</li>
+                <li i18n:translate="description_helptext_download">You can download an example of a valid classlist import-spreadsheet here</li>
             </ol>
             <a href="#" tal:attributes="href string:${portal_url}/++resource++upfront.classlist/sample_classlist.xls"
-               i18n:translate="helptext_download_link">Download an example class list here</a>
+               i18n:translate="helptext_download_link">Download an example classlist here</a>
         </div>
 
     </div>

@@ -66,7 +66,7 @@ class ExportClassListView(grok.View):
 
             self.request.response.write(csv_content)
         else:
-            msg = _('The class list has no learners')
+            msg = _('The classlist has no learners')
             IStatusMessage(self.request).addStatusMessage(msg,"info")
 
         self.request.response.redirect(

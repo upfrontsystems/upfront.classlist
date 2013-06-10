@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-10 08:49+0000\n"
-"PO-Revision-Date: 2012-06-10 10:51+0200\n"
+"POT-Creation-Date: 2013-06-10 12:58+0000\n"
+"PO-Revision-Date: 2012-06-10 15:00+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -133,15 +133,15 @@ msgid "Student code not unique"
 msgstr "Student kode nie uniek nie"
 
 #: ./browser/exportclasslist.py:69
-msgid "The class list has no learners"
-msgstr "Die klas lys het geen leerders"
+msgid "The classlist has no learners"
+msgstr "Die klaslys het geen leerders"
 
 #: ./content/classlist.py:83
 #: ./content/templates/viewclasslist.pt:60
 msgid "Unknown"
 msgstr "Onbekend"
 
-#. Default: "Here you can edit the class list and learners, or you can"
+#. Default: "Here you can edit the classlist and learners, or you can"
 #: ./content/templates/viewclasslist.pt:18
 msgid "description_classlists"
 msgstr "Hier kan jy die klaslys en leerders te wysig, of u kan"
@@ -161,7 +161,7 @@ msgstr "Volle Naam"
 msgid "description_helptext_columns"
 msgstr "Dit moet net die volgende kolomme he en in hierdie volgorde:"
 
-#. Default: "You can download an example of a valid class list import-spreadsheet here"
+#. Default: "You can download an example of a valid classlist import-spreadsheet here"
 #: ./browser/templates/importlearners.pt:74
 msgid "description_helptext_download"
 msgstr "U kan 'n voorbeeld van 'n geldige klaslys invoer-spreadsheet hier aflaai"
@@ -195,7 +195,7 @@ msgstr "fout"
 msgid "heading_classname"
 msgstr "KLAS NAAM"
 
-#. Default: "Edit Class List: ${classlist_title}"
+#. Default: "Edit Classlist: ${classlist_title}"
 #: ./content/templates/viewclasslist.pt:15
 msgid "heading_edit_classlist"
 msgstr "Redigeer Klas Lys: ${classlist_title}"
@@ -215,7 +215,7 @@ msgstr "Invoer leerders"
 msgid "heading_import_learners_description"
 msgstr "Hier kan U leerders via 'n Excel spreadsheet invoer"
 
-#. Default: "Download an example class list here"
+#. Default: "Download an example classlist here"
 #: ./browser/templates/importlearners.pt:76
 msgid "helptext_download_link"
 msgstr "Laai hier 'n voorbeeld klaslys"
@@ -243,7 +243,7 @@ msgstr "Leerder: ${name} Geslag: ${gender} nie erken nie"
 msgid "learners_language_not_recognized"
 msgstr "Leerder: ${name} taal: ${language} nie erken nie"
 
-#. Default: "export this class list"
+#. Default: "export this classlist"
 #: ./content/templates/viewclasslist.pt:19
 msgid "link_exportclasslist"
 msgstr "hierdie klaslys uitvoer"

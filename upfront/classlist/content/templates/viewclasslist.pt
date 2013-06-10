@@ -11,12 +11,12 @@
 
     <div id="content-core">
 
-        <h1 i18n:translate="heading_edit_classlist">Edit Class List: 
+        <h1 i18n:translate="heading_edit_classlist">Edit Classlist: 
             <span i18n:name="classlist_title" tal:content="view/classlist"> </span>
         </h1>
 
-        <span i18n:translate="description_classlists">Here you can edit the class list and learners, or you can</span>
-        <a tal:attributes="href view/export_url" i18n:translate="link_exportclasslist">export this class list</a>
+        <span i18n:translate="description_classlists">Here you can edit the classlist and learners, or you can</span>
+        <a tal:attributes="href view/export_url" i18n:translate="link_exportclasslist">export this classlist</a>
         <div>&nbsp;</div>
 
         <form tal:attributes="action view/save_url" id="classlist-edit-form" method="POST"> 

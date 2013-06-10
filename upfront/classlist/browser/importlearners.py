@@ -53,14 +53,14 @@ class UploadClassListSpreadsheetView(grok.View):
 
     def __call__(self):
         """ Upload the supplied spreadsheet. Get all the learners from
-            it and add them to the supplied class list (new or existing).
+            it and add them to the supplied classlist (new or existing).
         """
 
         errors = []
         request = self.request
         import_view_url = '%s/@@import-learners' % self.context.absolute_url()
         
-        # Make sure we have valid class list data (name, grade, etc.)
+        # Make sure we have valid classlist data (name, grade, etc.)
         error, classlist_id = self.get_validated_classlist_id(request)
         error and errors.append(error)
         
