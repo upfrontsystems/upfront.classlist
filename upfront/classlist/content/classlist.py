@@ -3,6 +3,7 @@ from five import grok
 
 from Acquisition import aq_parent
 from zope.app.container.interfaces import INameChooser
+from zope.component.hooks import getSite
 from zope.interface import Interface
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
@@ -22,6 +23,16 @@ class IClassList(form.Schema):
 
 class ClassList(dexterity.Container):
     grok.implements(IClassList)
+
+    def is_editable(self): 
+        """ Check whether the classlist can be edited 
+            ie. it is not in use by evaluationsheets.
+        """
+        pw = getSite().portal_workflow
+        state = pw.getStatusOf('classlist_workflow',self)['state']
+        if state == 'editable':
+            return True
+        return False
 
 
 grok.templatedir('templates')
