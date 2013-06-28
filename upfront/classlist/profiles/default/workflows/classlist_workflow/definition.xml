@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="classlist_workflow" title="DC Workflow Definition" description="" state_variable="state" initial_state="editable" manager_bypass="False">
+<permission>View</permission>
+
+ <state state_id="frozen" title="">
+  <exit-transition transition_id="set_editable"/>
+ <permission-map name="View" acquired="False">
+  <permission-role>Contributor</permission-role>
+  <permission-role>Editor</permission-role>
+  <permission-role>Manager</permission-role>
+  <permission-role>Site Administrator</permission-role>
+  <permission-role>Owner</permission-role>
+  <permission-role>Reader</permission-role>
+ </permission-map>
+ </state>
+
+ <state state_id="editable" title="">
+  <exit-transition transition_id="set_frozen"/>
+ <permission-map name="View" acquired="False">
+  <permission-role>Contributor</permission-role>
+  <permission-role>Editor</permission-role>
+  <permission-role>Manager</permission-role>
+  <permission-role>Site Administrator</permission-role>
+  <permission-role>Owner</permission-role>
+  <permission-role>Reader</permission-role>
+ </permission-map>
+ </state>
+
+ <transition transition_id="set_frozen" 
+  title="Transition to frozen state" new_state="frozen" trigger="USER" before_script="" after_script="">
+ <description>Transition to frozen state</description>
+  <guard>
+    <guard-permission>View</guard-permission>
+  </guard>
+ </transition>
+
+ <transition transition_id="set_editable" 
+  title="Transition to editable state" new_state="editable" trigger="USER" before_script="" after_script="">
+ <description>Transition to editable state</description>
+  <guard>
+    <guard-permission>View</guard-permission>
+  </guard>
+ </transition>
+
+</dc-workflow>

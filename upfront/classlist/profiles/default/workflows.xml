@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<object name="portal_workflow" meta_type="Plone Workflow Tool">
+
+ <property
+    name="title">Contains workflow definitions for upfront.classlist</property>
+
+ <object name="classlist_workflow" meta_type="Workflow"/>
+ <bindings>
+  <type type_id="upfront.classlist.content.classlist">
+   <bound-workflow workflow_id="classlist_workflow" />
+  </type>
+ </bindings>
+
+</object>
