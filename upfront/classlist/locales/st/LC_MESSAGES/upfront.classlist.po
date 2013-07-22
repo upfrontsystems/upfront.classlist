@@ -1,283 +1,280 @@
-# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2013-07-22 09:34+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2012-07-22 08:50+0200\n"
+"Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
+"Language-Code: st\n"
+"Language-Name: Sesotho\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: upfront.classlist\n"
 
 #: ./content/templates/viewclasslist.pt:77
 msgid "Add"
-msgstr ""
+msgstr "Eketsa"
 
 #: ./profiles/default/types/upfront.classlist.content.classlist.xml
 msgid "Class List"
-msgstr ""
+msgstr "Lenaneo la mabitso a baithutwana"
 
 #: ./content/classlist.py:135
 msgid "Classlist was modified"
-msgstr ""
+msgstr "Diperesente tša lenaneo la mabitso a baithuti e entswe bobebe"
 
 #: ./browser/importlearners.py:207
 msgid "Could not add learner:"
-msgstr ""
+msgstr "Morutwana ha a ngolwa"
 
 #: ./content/classlist.py:175
 msgid "Delete failed"
-msgstr ""
+msgstr "ho hlakola ho feitsi"
 
 #: ./content/classlist.py:91
 #: ./content/templates/viewclasslist.pt:64
 #: ./vocabs.py:14
 msgid "Female"
-msgstr ""
+msgstr "Botshehadi"
 
 #: ./content/classlist.py:213
 msgid "Field cannot be empty"
-msgstr ""
+msgstr "Field cannot be empty"
 
 #: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:33
 msgid "Gender"
-msgstr ""
+msgstr "Bong"
 
 #: ./browser/templates/importlearners.pt:60
 #: ./content/learner.py:28
 msgid "Home Language"
-msgstr ""
+msgstr "Puo ya lapeng"
 
 #: ./browser/templates/importlearners.pt:44
 msgid "Import the learners"
-msgstr ""
+msgstr "Fallisetsa mabitso a baithuti"
 
 #: ./profiles/default/types/upfront.classlist.content.learner.xml
 msgid "Learner"
-msgstr ""
+msgstr "Morutwana"
 
 #: ./content/classlist.py:183
 msgid "Learner(s) removed from classlist"
-msgstr ""
+msgstr "Baithuti ba tlositsweng lenaneong la mabitso"
 
 #: ./content/classlist.py:88
 #: ./content/templates/viewclasslist.pt:62
 #: ./vocabs.py:13
 msgid "Male"
-msgstr ""
+msgstr "Tona"
 
 #: ./content/learner.py:22
 msgid "Name"
-msgstr ""
+msgstr "Lebitso"
 
 #: ./content/classlist.py:124
 msgid "Name is not unique"
-msgstr ""
+msgstr "Lebitso ha se le tshwanang le le leng"
 
 #: ./content/classlist.py:111
 msgid "Name is required"
-msgstr ""
+msgstr "Go batleha lebitso"
 
 #: ./content/classlist.py:248
 msgid "New learner added"
-msgstr ""
+msgstr "Ho kentswe moithuti ya motjha"
 
 #: ./content/classlist.py:140
 msgid "New name identical to old name"
-msgstr ""
+msgstr "Lebitso le letjha le tshwana le la kgale"
 
 #: ./browser/importlearners.py:113
 msgid "Please indicate which class to use"
-msgstr ""
+msgstr "Bontsha phaphusi e o tlo e sebedisa"
 
 #: ./browser/importlearners.py:142
 msgid "Please supply a number, name, gender and language"
-msgstr ""
+msgstr "Fana ka nomoro, lebitso, bong le puo"
 
 #: ./browser/importlearners.py:127
 msgid "Please supply a valid file"
-msgstr ""
+msgstr "Fana ka faele ya nnete"
 
 #: ./browser/importlearners.py:139
 msgid "Please supply at least one learner"
-msgstr ""
+msgstr "Bonnyane, fana ka moithuti a le mong"
 
 #: ./browser/importlearners.py:134
 msgid "Please supply at least one work sheet"
-msgstr ""
+msgstr "Bonnyane, fana ka leqephe le le leng la mosebetsi"
 
 #: ./content/templates/viewclasslist.pt:106
 msgid "Remove"
-msgstr ""
+msgstr "Tlosa"
 
 #: ./content/templates/viewclasslist.pt:33
 msgid "Save"
-msgstr ""
+msgstr "Boloka"
 
 #: ./browser/importlearners.py:242
 msgid "Skipping existing learner"
-msgstr ""
+msgstr "Ho tshela barutwana ba leng teng"
 
 #: ./content/learner.py:17
 msgid "Student Code"
-msgstr ""
+msgstr "Khoutu ya moithuti"
 
 #: ./content/classlist.py:225
 msgid "Student code not unique"
-msgstr ""
+msgstr "Khoutu ya moithuti ha e tshwane e le nngwe"
 
 #: ./browser/exportclasslist.py:69
 msgid "The classlist has no learners"
-msgstr ""
+msgstr "Lenaneo la mabitso ha le na baithuti"
 
 #: ./content/classlist.py:94
 #: ./content/templates/viewclasslist.pt:60
 msgid "Unknown"
-msgstr ""
+msgstr "Tsa go se tsejwe"
 
 #. Default: "Here you can edit the classlist and learners, or you can"
 #: ./content/templates/viewclasslist.pt:18
 msgid "description_classlists"
-msgstr ""
+msgstr "Mo, o ka lokisa lenaneo la mabitso a baithuti, kapa o ka"
 
 #. Default: "Learner Code"
 #: ./browser/templates/importlearners.pt:57
 msgid "description_helptext_column_learnercode"
-msgstr ""
+msgstr "Khoutu ya baithuti"
 
 #. Default: "Full Name"
 #: ./browser/templates/importlearners.pt:58
 msgid "description_helptext_column_name"
-msgstr ""
+msgstr "Lebitso ka botlalo"
 
 #. Default: "It must have only the following columns and in this sequence:"
 #: ./browser/templates/importlearners.pt:55
 msgid "description_helptext_columns"
-msgstr ""
+msgstr "E tshwanetse ho ba le dikholomo tse latellang ka tatelano ye:"
 
 #. Default: "You can download an example of a valid classlist import-spreadsheet here"
 #: ./browser/templates/importlearners.pt:74
 msgid "description_helptext_download"
-msgstr ""
+msgstr "O ka ntsha mohlala wa lenaneo la mannete mabitsong a phapusi ho tswa leqepheng"
 
 #. Default: "No headers to columns, just the learner details"
 #: ./browser/templates/importlearners.pt:63
 msgid "description_helptext_no_headers"
-msgstr ""
+msgstr "Dikholomo ha di na sehloho, ho na le tshedimoso ya baithuti"
 
 #. Default: "An example of a valid row in the spreadsheet would be:<br /> 1234 | Thabo Msimang | Male | isiXhosa"
 #: ./browser/templates/importlearners.pt:72
 msgid "description_helptext_valid_example"
-msgstr ""
+msgstr "Mohlala moleng wa nnete leqepheng la eksele e tla ba: <br /> 1234 | Thabo-Msimang | Manlik | isiXhosa"
 
 #. Default: "Valid values for Gender are 'Male' and 'Female'"
 #: ./browser/templates/importlearners.pt:64
 msgid "description_helptext_valid_gender"
-msgstr ""
+msgstr "Maikemisetso a nnete a bong ba 'Botona' le 'Botshehadi'"
 
 #. Default: "Valid values for Home Language are:"
 #: ./browser/templates/importlearners.pt:65
 msgid "description_helptext_valid_lang"
-msgstr ""
+msgstr "Maikemisetso a nnete a Puo ya lapeng:"
 
 #: ./content/classlist.py:174
 msgid "error"
-msgstr ""
+msgstr "phoso"
 
 #. Default: "CLASS NAME"
 #: ./content/templates/viewclasslist.pt:26
 msgid "heading_classname"
-msgstr ""
+msgstr "LEBITSO LA PHAPHOSI"
 
 #. Default: "Edit Classlist: ${classlist_title}"
 #: ./content/templates/viewclasslist.pt:15
 msgid "heading_edit_classlist"
-msgstr ""
+msgstr "Hlophisa lenaneo la mabitso a barutwana: ${classlist_title}"
 
 #. Default: "Required spreadsheet format:"
 #: ./browser/templates/importlearners.pt:53
 msgid "heading_helptext_required_format"
-msgstr ""
+msgstr "Sebopeho se batlehang sa leqephe sa eksele:"
 
 #. Default: "Import learners"
 #: ./browser/templates/importlearners.pt:14
 msgid "heading_import_learners"
-msgstr ""
+msgstr "Fallisa barutwana"
 
 #. Default: "Here you can import learners via an Excel spreadsheet"
 #: ./browser/templates/importlearners.pt:16
 msgid "heading_import_learners_description"
-msgstr ""
+msgstr "Ka tshebediso ya leqephe la eksele, o ka tlisa mabitso a baithuti mo"
 
 #. Default: "Download an example classlist here"
 #: ./browser/templates/importlearners.pt:76
 msgid "helptext_download_link"
-msgstr ""
+msgstr "Ntsha mohlala wa lenaneo la mabitso a barutwana"
 
 #: ./browser/importlearners.py:165
 msgid "import-learners called from incorrect context"
-msgstr ""
+msgstr "Fallisetsa baithuti ba bitsitsweng go tswa ka hara tse fosahetseng"
 
 #: ./content/classlist.py:182
 msgid "info"
-msgstr ""
+msgstr "info"
 
 #. Default: "Class name:"
 #: ./browser/templates/importlearners.pt:25
 msgid "label_create_new_class"
-msgstr ""
+msgstr "Lebitso la phaphosi:"
 
 #. Default: "Learner: ${name} gender: ${gender} not recognized"
 #: ./browser/importlearners.py:249
 msgid "learners_gender_not_recognized"
-msgstr ""
+msgstr "Moithuti/Morutwana: ${name} bong: ${gender} ha le a lemohwa"
 
 #. Default: "Learner: ${name} language: ${language} not recognized"
 #: ./browser/importlearners.py:256
 msgid "learners_language_not_recognized"
-msgstr ""
+msgstr "Moithuti/Morutwana: ${name} puo: ${language} ha le a lemohwa"
 
 #. Default: "export this classlist"
 #: ./content/templates/viewclasslist.pt:19
 msgid "link_exportclasslist"
-msgstr ""
+msgstr "Romelantle lenaneo la mabitso a barutwana"
 
 #. Default: "No learners added to this classlist"
 #: ./content/templates/viewclasslist.pt:87
 msgid "message_no_learners"
-msgstr ""
+msgstr "Mabitso a barutwana ha a eketswa lenaneong"
 
 #. Default: "Use the learners in this file:"
 #: ./browser/templates/importlearners.pt:28
 msgid "select_file"
-msgstr ""
+msgstr "Šomiša barutwana faeleng ye:"
 
 #. Default: "CODE"
 #: ./content/templates/viewclasslist.pt:46
 msgid "title_code"
-msgstr ""
+msgstr "KHOUTU"
 
 #. Default: "GENDER"
 #: ./content/templates/viewclasslist.pt:48
 msgid "title_gender"
-msgstr ""
+msgstr "BONG"
 
 #. Default: "HOME LANGUAGE"
 #: ./content/templates/viewclasslist.pt:49
 msgid "title_home_language"
-msgstr ""
+msgstr "LELEME LA GAE"
 
 #. Default: "LEARNER NAME"
 #: ./content/templates/viewclasslist.pt:47
 msgid "title_learner_name"
-msgstr ""
+msgstr "LEBITSO LA MOITHUTI"
 

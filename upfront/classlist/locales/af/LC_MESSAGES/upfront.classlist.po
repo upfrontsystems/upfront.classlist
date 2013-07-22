@@ -222,7 +222,7 @@ msgstr "Laai hier 'n voorbeeld klaslys"
 
 #: ./browser/importlearners.py:165
 msgid "import-learners called from incorrect context"
-msgstr "nvoer-leerders gereop van 'n ​​verkeerde konteks"
+msgstr "invoer-leerders gereop van 'n ​​verkeerde konteks"
 
 #: ./content/classlist.py:171
 msgid "info"
