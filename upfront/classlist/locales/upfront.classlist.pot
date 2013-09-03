@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-22 09:34+0000\n"
+"POT-Creation-Date: 2013-09-03 09:15+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,10 @@ msgstr ""
 msgid "Classlist was modified"
 msgstr ""
 
+#: ./content/learner.py:21
+msgid "Code"
+msgstr ""
+
 #: ./browser/importlearners.py:207
 msgid "Could not add learner:"
 msgstr ""
@@ -48,12 +52,12 @@ msgid "Field cannot be empty"
 msgstr ""
 
 #: ./browser/templates/importlearners.pt:59
-#: ./content/learner.py:33
+#: ./content/learner.py:37
 msgid "Gender"
 msgstr ""
 
 #: ./browser/templates/importlearners.pt:60
-#: ./content/learner.py:28
+#: ./content/learner.py:32
 msgid "Home Language"
 msgstr ""
 
@@ -75,7 +79,7 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
-#: ./content/learner.py:22
+#: ./content/learner.py:26
 msgid "Name"
 msgstr ""
 
@@ -127,16 +131,16 @@ msgstr ""
 msgid "Skipping existing learner"
 msgstr ""
 
-#: ./content/learner.py:17
-msgid "Student Code"
-msgstr ""
-
 #: ./content/classlist.py:225
 msgid "Student code not unique"
 msgstr ""
 
 #: ./browser/exportclasslist.py:69
 msgid "The classlist has no learners"
+msgstr ""
+
+#: ./content/learner.py:60
+msgid "This Learner Code already exists in the system. The Learner Code must be unique."
 msgstr ""
 
 #: ./content/classlist.py:94

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-06-10 12:58+0000\n"
+"POT-Creation-Date: 2013-09-03 09:15+0000\n"
 "PO-Revision-Date: 2012-06-10 15:00+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,35 +22,39 @@ msgstr "Voeg by"
 msgid "Class List"
 msgstr "Klaslys"
 
-#: ./content/classlist.py:124
+#: ./content/classlist.py:135
 msgid "Classlist was modified"
 msgstr "Klaslys is verander"
+
+#: ./content/learner.py:21
+msgid "Code"
+msgstr "Kode"
 
 #: ./browser/importlearners.py:207
 msgid "Could not add learner:"
 msgstr "Kon nie leerder byvoeg nie"
 
-#: ./content/classlist.py:164
+#: ./content/classlist.py:175
 msgid "Delete failed"
 msgstr "Werwyder misluk"
 
-#: ./content/classlist.py:80
+#: ./content/classlist.py:91
 #: ./content/templates/viewclasslist.pt:64
 #: ./vocabs.py:14
 msgid "Female"
 msgstr "Vroulik"
 
-#: ./content/classlist.py:202
+#: ./content/classlist.py:213
 msgid "Field cannot be empty"
 msgstr "Veld mag nie leeg wees nie"
 
 #: ./browser/templates/importlearners.pt:59
-#: ./content/learner.py:33
+#: ./content/learner.py:37
 msgid "Gender"
 msgstr "Geslag"
 
 #: ./browser/templates/importlearners.pt:60
-#: ./content/learner.py:28
+#: ./content/learner.py:32
 msgid "Home Language"
 msgstr "Huistaal"
 
@@ -62,33 +66,33 @@ msgstr "Invoer die leerders"
 msgid "Learner"
 msgstr "Leerder"
 
-#: ./content/classlist.py:172
+#: ./content/classlist.py:183
 msgid "Learner(s) removed from classlist"
 msgstr "Leerder(s) van klaslys werwyder"
 
-#: ./content/classlist.py:77
+#: ./content/classlist.py:88
 #: ./content/templates/viewclasslist.pt:62
 #: ./vocabs.py:13
 msgid "Male"
 msgstr "Manlik"
 
-#: ./content/learner.py:22
+#: ./content/learner.py:26
 msgid "Name"
 msgstr "Naam"
 
-#: ./content/classlist.py:113
+#: ./content/classlist.py:124
 msgid "Name is not unique"
 msgstr "Naam is nie uniek nie"
 
-#: ./content/classlist.py:100
+#: ./content/classlist.py:111
 msgid "Name is required"
 msgstr "Naam is vereis"
 
-#: ./content/classlist.py:237
+#: ./content/classlist.py:248
 msgid "New learner added"
 msgstr "Nuwe leerder bygevoeg"
 
-#: ./content/classlist.py:129
+#: ./content/classlist.py:140
 msgid "New name identical to old name"
 msgstr "Nuwe naam identies aan ou naam"
 
@@ -124,11 +128,7 @@ msgstr "Stoor"
 msgid "Skipping existing learner"
 msgstr "Huppel bestaande leerder"
 
-#: ./content/learner.py:17
-msgid "Student Code"
-msgstr "Student Kode"
-
-#: ./content/classlist.py:214
+#: ./content/classlist.py:225
 msgid "Student code not unique"
 msgstr "Student kode nie uniek nie"
 
@@ -136,7 +136,11 @@ msgstr "Student kode nie uniek nie"
 msgid "The classlist has no learners"
 msgstr "Die klaslys het geen leerders"
 
-#: ./content/classlist.py:83
+#: ./content/learner.py:60
+msgid "This learner code already exists in the system. The learner code must be unique."
+msgstr "Hierdie leerder kode bestaan ​​reeds in die stelsel. Die leerder kode moet uniek wees"
+
+#: ./content/classlist.py:94
 #: ./content/templates/viewclasslist.pt:60
 msgid "Unknown"
 msgstr "Onbekend"
@@ -186,7 +190,7 @@ msgstr "Geldige waardes vir geslag is 'Manlik' en 'Vroulik'"
 msgid "description_helptext_valid_lang"
 msgstr "Geldige waardes vir Huistaal is:"
 
-#: ./content/classlist.py:163
+#: ./content/classlist.py:174
 msgid "error"
 msgstr "fout"
 
@@ -224,7 +228,7 @@ msgstr "Laai hier 'n voorbeeld klaslys"
 msgid "import-learners called from incorrect context"
 msgstr "invoer-leerders gereop van 'n ​​verkeerde konteks"
 
-#: ./content/classlist.py:171
+#: ./content/classlist.py:182
 msgid "info"
 msgstr "info"
 

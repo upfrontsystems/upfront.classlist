@@ -1,9 +1,13 @@
 from five import grok
 from zope import schema
+from zope.interface import Invalid
 from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 from z3c.relationfield.schema import RelationChoice
 from z3c.form.browser.select import SelectFieldWidget
+from z3c.form import validator
 from plone.directives import dexterity, form
+from plone.uuid.interfaces import IUUID
+from Products.CMFCore.utils import getToolByName
 
 from upfront.classlist import MessageFactory as _
 from upfront.classlist.vocabs import GENDER
@@ -14,7 +18,7 @@ class ILearner(form.Schema):
     """
 
     code = schema.TextLine(
-            title=_(u"Student Code"),
+            title=_(u"Code"),
             required=True,
         )
 
@@ -39,3 +43,24 @@ class ILearner(form.Schema):
 class Learner(dexterity.Item):
     grok.implements(ILearner)
 
+
+class LearnerCodeValidator(validator.SimpleFieldValidator):
+    
+    def validate(self, value):
+        super(LearnerCodeValidator, self).validate(value)
+
+        catalog = getToolByName(self.context, 'portal_catalog')
+        result = catalog(portal_type='upfront.classlist.content.learner',
+                         id=value)
+        count = len(result)
+        # we are editing a learner without changing the value
+        if count == 1 and result[0].UID == IUUID(self.context):
+            return True
+        elif count > 0:
+            raise Invalid(_(u"This learner code already "
+                             "exists in the system. The learner code "
+                             "must be unique."))
+
+validator.WidgetValidatorDiscriminators(LearnerCodeValidator, 
+                                            field=ILearner['code'])
+grok.global_adapter(LearnerCodeValidator)

@@ -107,7 +107,8 @@ function updateLearnerListingPostAdd(data) {
         // code
         $('#div-learner-listing tr:last td:nth-child(2)').html(code)
         // name link
-        $('#div-learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
+        $('#div-learner-listing tr:last td:nth-child(3) a').attr('href', editurl)
+        $('#div-learner-listing tr:last td:nth-child(3) a').addClass('edit_link')
         $('#div-learner-listing tr:last td:nth-child(3) a').html(name)
         // language
         $('#div-learner-listing tr:last td:nth-child(4)').html(lang)

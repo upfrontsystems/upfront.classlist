@@ -17,11 +17,6 @@
   <property name="schema">upfront.classlist.content.learner.ILearner</property> 
   <property name="klass">upfront.classlist.content.learner.Learner</property>
 
-  <property name="behaviors">
-     <element value="plone.app.content.interfaces.INameFromTitle" />
-     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/>
-   </property>
-
   <!-- View information -->
   <property name="link_target"></property>
   <property name="immediate_view">view</property>

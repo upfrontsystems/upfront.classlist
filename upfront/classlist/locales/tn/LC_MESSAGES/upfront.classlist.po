@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-07-22 09:34+0000\n"
+"POT-Creation-Date: 2013-09-03 09:15+0000\n"
 "PO-Revision-Date: 2012-07-22 08:50+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,10 @@ msgstr "Lenaneo la maina a baithuti"
 msgid "Classlist was modified"
 msgstr "Diperesente tsa lenaneo la maina a baithuti le entswe bonolo"
 
+#: ./content/learner.py:21
+msgid "Code"
+msgstr ""
+
 #: ./browser/importlearners.py:207
 msgid "Could not add learner:"
 msgstr "Morutwana ga a tsenywa"
@@ -45,12 +49,12 @@ msgid "Field cannot be empty"
 msgstr "Field cannot be empty"
 
 #: ./browser/templates/importlearners.pt:59
-#: ./content/learner.py:33
+#: ./content/learner.py:37
 msgid "Gender"
 msgstr "Bong"
 
 #: ./browser/templates/importlearners.pt:60
-#: ./content/learner.py:28
+#: ./content/learner.py:32
 msgid "Home Language"
 msgstr "Puo ya gae"
 
@@ -72,7 +76,7 @@ msgstr "Baithuti bao ba tlositsweng lenaneong la maina"
 msgid "Male"
 msgstr "Tona"
 
-#: ./content/learner.py:22
+#: ./content/learner.py:26
 msgid "Name"
 msgstr "Leina"
 
@@ -124,10 +128,6 @@ msgstr "Boloka"
 msgid "Skipping existing learner"
 msgstr "Go tshela barutwana bao ba leng teng"
 
-#: ./content/learner.py:17
-msgid "Student Code"
-msgstr "Khoutu ya moithuti"
-
 #: ./content/classlist.py:225
 msgid "Student code not unique"
 msgstr "Khoutu ya moithuti ga se ya motshwananosi"
@@ -135,6 +135,10 @@ msgstr "Khoutu ya moithuti ga se ya motshwananosi"
 #: ./browser/exportclasslist.py:69
 msgid "The classlist has no learners"
 msgstr "Lenaneo la maina ga le na baithuti"
+
+#: ./content/learner.py:60
+msgid "This Learner Code already exists in the system. The Learner Code must be unique."
+msgstr ""
 
 #: ./content/classlist.py:94
 #: ./content/templates/viewclasslist.pt:60
