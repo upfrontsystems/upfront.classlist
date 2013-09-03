@@ -96,7 +96,7 @@
                         </td>
                         <td tal:content="learner/code"></td>
                         <td>
-                            <a class="edit_link" tal:attributes="href string:${learner/absolute_url}/edit" 
+                            <a tal:attributes="href string:${learner/absolute_url}/edit" 
                                tal:content="string:${learner/name}"></a>
                         </td>                        
                         <td tal:content="learner/home_language/to_object/title"></td>                        
@@ -116,7 +116,7 @@
                     <tr class="odd">
                         <td><input type="checkbox" value="Code" id="id-learner" name="learners:string:list" title="Select"></td>
                         <td>Student Code</td>
-                        <td><a class="edit_link" href="http://url/edit">Name</a></td>
+                        <td><a href="http://url/edit">Name</a></td>
                         <td>Language</td>
                         <td>Gender</td>
                     </tr>

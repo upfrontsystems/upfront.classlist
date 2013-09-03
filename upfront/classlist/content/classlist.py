@@ -81,7 +81,7 @@ class View(dexterity.DisplayForm):
         """
         contentFilter = {
             'portal_type': 'upfront.classlist.content.learner',
-            'sort_on': 'sortable_title'}
+            'sort_on': 'id'}
         return self.context.getFolderContents(contentFilter,full_objects=True)
 
     def male_str(self):
