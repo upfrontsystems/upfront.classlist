@@ -1,4 +1,4 @@
-from csv import DictWriter
+import csv
 from cStringIO import StringIO
 from DateTime import DateTime
 
@@ -32,12 +32,13 @@ class ExportClassListView(grok.View):
         learner_csv = StringIO()
 
         if learners is not None and len(learners) > 0:
-            writer = DictWriter(learner_csv,
+            writer = csv.DictWriter(learner_csv,
                                 fieldnames=['code', 'name', 'gender',
                                             'language'],
                                 restval='',
                                 extrasaction='ignore',
-                                dialect='excel'
+                                dialect='excel',
+                                quoting=csv.QUOTE_ALL
                                )
 
             for learner in learners:
