@@ -55,7 +55,7 @@ class ExportClassListView(grok.View):
             nice_filename = 'classlist-%s' % self.context.title
 
             self.request.response.setHeader("Content-Disposition",
-                                            "attachment; filename=%s.csv" % 
+                                            "attachment; filename=%s.xls" % 
                                              nice_filename)
             self.request.response.setHeader("Content-Type", "text/csv")
             self.request.response.setHeader("Content-Length", len(csv_content))
