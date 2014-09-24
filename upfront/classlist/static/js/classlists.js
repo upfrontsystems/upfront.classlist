@@ -110,9 +110,9 @@ function updateLearnerListingPostAdd(data) {
         $('#div-learner-listing tr:last td:nth-child(3) a').attr('href',editurl)
         $('#div-learner-listing tr:last td:nth-child(3) a').html(name)
         // language
-        $('#div-learner-listing tr:last td:nth-child(4)').html(lang)
+        $('#div-learner-listing tr:last td:nth-child(4)').html(gender)
         // gender
-        $('#div-learner-listing tr:last td:nth-child(5)').html(gender)
+        $('#div-learner-listing tr:last td:nth-child(5)').html(lang)
 
         // clear the learner code and name fields
         $('#classlist-code').attr('value','')

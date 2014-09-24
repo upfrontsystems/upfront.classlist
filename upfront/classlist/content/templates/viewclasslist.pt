@@ -98,9 +98,9 @@
                         <td>
                             <a tal:attributes="href string:${learner/absolute_url}/edit" 
                                tal:content="string:${learner/name}"></a>
-                        </td>                        
-                        <td tal:content="learner/home_language/to_object/title"></td>                        
+                        </td>
                         <td tal:content="learner/gender"></td>
+                        <td tal:content="learner/home_language/to_object/title"></td>                        
                     </tr>
                 </table>
                 <input class="allowMultiSubmit" id="learner-remove" type="submit" value="Remove" name="form.button.remove" 
