@@ -106,7 +106,10 @@ class ExportClassListXlsView(grok.View):
         learner_csv = StringIO()
 
         ezxf = xlwt.easyxf
-        headings = ['Code', 'Name', 'Gender', 'Language']
+        headings = [self.context.translate(_('Code')),
+                    self.context.translate(_('Name')),
+                    self.context.translate(_('Gender')),
+                    self.context.translate(_('Language'))]
         kinds =     'text    text    text      text'.split()
         if learners is not None and len(learners) > 0:
 
@@ -133,7 +136,8 @@ class ExportClassListXlsView(grok.View):
             data_xfs = [kind_to_xf_map[k] for k in kinds]
 
             book = xlwt.Workbook()
-            sheet = book.add_sheet(self.context.title) # XXX make sure it is utf sanitized
+            sheet = book.add_sheet(self.context.title) # XXX make sure it is utf
+                                                       # sanitized
             rowx = 0
             for colx, value in enumerate(headings):
                 sheet.write(rowx, colx, value, heading_xf)
