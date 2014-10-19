@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-03 09:15+0000\n"
+"POT-Creation-Date: 2014-10-17 22:20+0000\n"
 "PO-Revision-Date: 2012-07-22 08:50+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,9 +26,10 @@ msgstr "Lenaneo la mabitso a baithutwana"
 msgid "Classlist was modified"
 msgstr "Diperesente tša lenaneo la mabitso a baithuti e entswe bobebe"
 
+#: ./browser/exportclasslist.py:109
 #: ./content/learner.py:21
 msgid "Code"
-msgstr ""
+msgstr "Khoutu"
 
 #: ./browser/importlearners.py:207
 msgid "Could not add learner:"
@@ -48,6 +49,7 @@ msgstr "Botshehadi"
 msgid "Field cannot be empty"
 msgstr "Field cannot be empty"
 
+#: ./browser/exportclasslist.py:111
 #: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:37
 msgid "Gender"
@@ -61,6 +63,10 @@ msgstr "Puo ya lapeng"
 #: ./browser/templates/importlearners.pt:44
 msgid "Import the learners"
 msgstr "Fallisetsa mabitso a baithuti"
+
+#: ./browser/exportclasslist.py:112
+msgid "Language"
+msgstr "Puo"
 
 #: ./profiles/default/types/upfront.classlist.content.learner.xml
 msgid "Learner"
@@ -76,6 +82,7 @@ msgstr "Baithuti ba tlositsweng lenaneong la mabitso"
 msgid "Male"
 msgstr "Tona"
 
+#: ./browser/exportclasslist.py:110
 #: ./content/learner.py:26
 msgid "Name"
 msgstr "Lebitso"
@@ -132,12 +139,12 @@ msgstr "Ho tshela barutwana ba leng teng"
 msgid "Student code not unique"
 msgstr "Khoutu ya moithuti ha e tshwane e le nngwe"
 
-#: ./browser/exportclasslist.py:69
+#: ./browser/exportclasslist.py:71
 msgid "The classlist has no learners"
 msgstr "Lenaneo la mabitso ha le na baithuti"
 
 #: ./content/learner.py:60
-msgid "This Learner Code already exists in the system. The Learner Code must be unique."
+msgid "This learner code already exists in the system. The learner code must be unique."
 msgstr ""
 
 #: ./content/classlist.py:94

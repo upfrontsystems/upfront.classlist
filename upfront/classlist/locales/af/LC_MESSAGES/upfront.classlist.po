@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-03 09:15+0000\n"
+"POT-Creation-Date: 2014-10-17 22:20+0000\n"
 "PO-Revision-Date: 2012-06-10 15:00+0200\n"
 "Last-Translator: witek\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,6 +26,7 @@ msgstr "Klaslys"
 msgid "Classlist was modified"
 msgstr "Klaslys is verander"
 
+#: ./browser/exportclasslist.py:109
 #: ./content/learner.py:21
 msgid "Code"
 msgstr "Kode"
@@ -48,6 +49,7 @@ msgstr "Vroulik"
 msgid "Field cannot be empty"
 msgstr "Veld mag nie leeg wees nie"
 
+#: ./browser/exportclasslist.py:111
 #: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:37
 msgid "Gender"
@@ -61,6 +63,10 @@ msgstr "Huistaal"
 #: ./browser/templates/importlearners.pt:44
 msgid "Import the learners"
 msgstr "Invoer die leerders"
+
+#: ./browser/exportclasslist.py:112
+msgid "Language"
+msgstr "Taal"
 
 #: ./profiles/default/types/upfront.classlist.content.learner.xml
 msgid "Learner"
@@ -76,6 +82,7 @@ msgstr "Leerder(s) van klaslys werwyder"
 msgid "Male"
 msgstr "Manlik"
 
+#: ./browser/exportclasslist.py:110
 #: ./content/learner.py:26
 msgid "Name"
 msgstr "Naam"
@@ -132,7 +139,7 @@ msgstr "Huppel bestaande leerder"
 msgid "Student code not unique"
 msgstr "Student kode nie uniek nie"
 
-#: ./browser/exportclasslist.py:69
+#: ./browser/exportclasslist.py:71
 msgid "The classlist has no learners"
 msgstr "Die klaslys het geen leerders"
 

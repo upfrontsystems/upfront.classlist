@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2013-09-03 09:15+0000\n"
+"POT-Creation-Date: 2014-10-17 22:20+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,6 +29,7 @@ msgstr ""
 msgid "Classlist was modified"
 msgstr ""
 
+#: ./browser/exportclasslist.py:109
 #: ./content/learner.py:21
 msgid "Code"
 msgstr ""
@@ -51,6 +52,7 @@ msgstr ""
 msgid "Field cannot be empty"
 msgstr ""
 
+#: ./browser/exportclasslist.py:111
 #: ./browser/templates/importlearners.pt:59
 #: ./content/learner.py:37
 msgid "Gender"
@@ -63,6 +65,10 @@ msgstr ""
 
 #: ./browser/templates/importlearners.pt:44
 msgid "Import the learners"
+msgstr ""
+
+#: ./browser/exportclasslist.py:112
+msgid "Language"
 msgstr ""
 
 #: ./profiles/default/types/upfront.classlist.content.learner.xml
@@ -79,6 +85,7 @@ msgstr ""
 msgid "Male"
 msgstr ""
 
+#: ./browser/exportclasslist.py:110
 #: ./content/learner.py:26
 msgid "Name"
 msgstr ""
@@ -135,12 +142,12 @@ msgstr ""
 msgid "Student code not unique"
 msgstr ""
 
-#: ./browser/exportclasslist.py:69
+#: ./browser/exportclasslist.py:71
 msgid "The classlist has no learners"
 msgstr ""
 
 #: ./content/learner.py:60
-msgid "This Learner Code already exists in the system. The Learner Code must be unique."
+msgid "This learner code already exists in the system. The learner code must be unique."
 msgstr ""
 
 #: ./content/classlist.py:94
